@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "title": "Házi pizzatészta",
+      "prepTime": 20,
+      "cookTime": 15,
+      "difficulty": "Közepes",
+      "image": "assets/pizza.jpg",
+      "tags": ["olasz", "tészta", "vegetáriánus"],
+      "description": "Tökéletes pizzatészta kezdőknek és profiknak egyaránt"
+    },
+
+    {
+        "id": 2,
+        "title": "Házi brownie",
+        "prepTime": 31,
+        "cookTime": 22,
+        "difficulty": "Közepes",
+        "image": "assets/brownie.jpg",
+        "tags": ["desszert", "süti", "usa"],
+        "description": "Egy csokoládés, szeletelt sütemény"
+    }
+  ]

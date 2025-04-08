@@ -5,7 +5,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
-import { TagService } from '../../shared/tags/tags.component';
+import { TagsComponent } from '../../shared/tags/tags.component';
+import { Receptek } from '../../models/receptek.models';
+import { HttpClient, } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-receptek',
@@ -16,7 +19,7 @@ import { TagService } from '../../shared/tags/tags.component';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './receptek.component.html',
   styleUrls: ['./receptek.component.css']
@@ -26,36 +29,20 @@ export class ReceptekComponent implements OnInit {
   tagGroups: { [key: string]: string[] } = {};
   activeFilter: string | null = null;
   filteredRecipes: any[] = [];
+  recipes: Receptek[] = [];
   
-  recipes = [
-    {
-      id: 1,
-      title: 'Házi pizzatészta',
-      prepTime: 20,
-      cookTime: 15,
-      difficulty: 'Közepes',
-      image: 'assets/pizza.jpg',
-      tags: ['olasz', 'tészta', 'vegetáriánus'],
-      description: 'Tökéletes pizzatészta kezdőknek és profiknak egyaránt'
-    },
-    {
-      id: 2,
-      title: 'Házi brownie',
-      prepTime: 30,
-      cookTime: 22,
-      difficulty: 'Közepes',
-      image: 'assets/brownie.jpg',
-      tags: ['desszert', 'süti', 'usa'],
-      description: 'Egy csokoládés, szeletelt sütemény'
-    }
-  ];
+ 
 
-  constructor(private tagService: TagService) {}
+  constructor(private tagService: TagsComponent, private http: HttpClient) {}
 
   ngOnInit() {
     this.allTags = this.tagService.getAllTags();
     this.tagGroups = this.tagService.getTagGroups();
     this.setDefaultFilter();
+    this.http.get<Receptek[]>('/assets/receptek.json').subscribe(data => {
+      this.recipes = data;
+    });
+
   }
 
   setDefaultFilter() {
@@ -70,8 +57,7 @@ export class ReceptekComponent implements OnInit {
     } else {
       this.filteredRecipes = this.recipes.filter(recipe => 
         recipe.tags.some(recipeTag => 
-          this.tagService.isValidTag(recipeTag) && 
-          recipeTag.toLowerCase() === tag.toLowerCase()
+          this.tagService.isValidTag(recipeTag) 
         )
       );
     }

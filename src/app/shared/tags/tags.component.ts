@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
-export class TagService {
+export class TagsComponent {
   private allTags: string[] = [
     'összes',
     'olasz',
