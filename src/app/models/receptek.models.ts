@@ -5,6 +5,6 @@ export interface Receptek {
       cookTime: number;
       difficulty: string;
       image: string;
-      tags: [];
+      tags: string[];
       description: string;
 }
