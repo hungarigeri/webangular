@@ -1,0 +1,27 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <a routerLink="/" class="brand">
+        <img class="material-icons" id="logo" src="assets/chef.png">
+        <span>Chef Vlog</span>
+      </a>
+  
+      <div class="nav-links">
+        <a routerLink="/">Home</a>
+        <a routerLink="/receptek">Receptek</a>
+        <a routerLink="/kontakt">Kontakt</a>
+      </div>
+  
+      <button class="mobile-menu-btn" (click)="toggleMenu()">
+        <span class="material-icons">menu</span>
+      </button>
+    </div>
+  
+    <div class="mobile-menu" [class.active]="menuActive">
+      <a routerLink="/" (click)="toggleMenu()">Home</a>
+      <mat-divider></mat-divider>
+      <a routerLink="/receptek" (click)="toggleMenu()">Receptek</a>
+      <mat-divider></mat-divider>
+      <a routerLink="/kontakt" (click)="toggleMenu()">Kontakt</a>
+      <mat-divider></mat-divider>
+    </div>
+  </nav>

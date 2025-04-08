@@ -1,0 +1,25 @@
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/taylor-kiser-1YhSMc1IywE-unsplash.jpg');
+    background-size: cover;
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .featured {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    
+    .recipe-card {
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+  }
+  
+  .meta {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+  }

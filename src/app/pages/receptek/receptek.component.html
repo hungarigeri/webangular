@@ -1,0 +1,49 @@
+<div class="filter-container">
+    <!-- Csoportosított tagek -->
+    <div *ngFor="let groupName of objectKeys(tagGroups)" class="tag-group">
+      <h3>{{groupName}}</h3>
+      <mat-chip-listbox>
+        <mat-chip-option
+          *ngFor="let tag of tagGroups[groupName]"
+          [selected]="isSelected(tag)"
+          (click)="filterRecipes(tag)">
+          {{tag}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  
+    <!-- Összes tag -->
+    <div class="tag-group">
+      <h3>Összes</h3>
+      <mat-chip-listbox>
+        <mat-chip-option
+          [selected]="activeFilter === null"
+          (click)="filterRecipes(null)">
+          Összes recept
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
+  
+  <!-- Recept lista -->
+  <div class="recipe-grid">
+    <mat-card *ngFor="let recipe of filteredRecipes" class="recipe-card">
+      <img mat-card-image [src]="recipe.image" [alt]="recipe.title">
+      <mat-card-content>
+        <h2>{{recipe.title}}</h2>
+        <div class="recipe-meta">
+          <span><mat-icon>schedule</mat-icon> {{recipe.prepTime + recipe.cookTime}} perc</span>
+          <span><mat-icon>restaurant</mat-icon> {{recipe.difficulty}}</span>
+        </div>
+        <p>{{recipe.description}}</p>
+        <div class="tags">
+          <mat-chip *ngFor="let tag of recipe.tags">{{tag}}</mat-chip>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/recept', recipe.id]">
+          Recept megtekintése
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

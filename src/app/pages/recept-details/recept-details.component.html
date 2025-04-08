@@ -1,0 +1,46 @@
+<mat-card *ngIf="recipe" class="recipe-detail-card">
+    <button mat-icon-button class="back-button" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    
+    <img mat-card-image [src]="recipe.image" [alt]="recipe.title">
+    
+    <mat-card-header>
+      <mat-card-title>{{recipe.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <span><mat-icon>schedule</mat-icon> {{recipe.prepTime + recipe.cookTime}} perc</span>
+        <span><mat-icon>restaurant</mat-icon> {{recipe.difficulty}}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <p>{{recipe.description}}</p>
+      
+      <mat-divider></mat-divider>
+      
+      <h3>Hozzávalók</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let item of recipe.ingredients">
+          <mat-icon matListItemIcon>check_circle</mat-icon>
+          <div matListItemTitle>{{item}}</div>
+        </mat-list-item>
+      </mat-list>
+      
+      <mat-divider></mat-divider>
+      
+      <h3>Elkészítés</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let step of recipe.steps; let i = index">
+          <div matListItemTitle>{{i+1}}. {{step}}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  
+  <div *ngIf="!recipe" class="not-found">
+    <mat-icon>error_outline</mat-icon>
+    <h2>Recept nem található</h2>
+    <button mat-raised-button color="primary" routerLink="/receptek">
+        Vissza a receptekhez
+      </button>
+  </div>
