@@ -5,21 +5,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
-import { TagsComponent } from '../../shared/tags/tags.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TagsComponent } from '../../shared/tags/tags.component'; // Komponens importálva
 import { Receptek } from '../../models/receptek.models';
-import { HttpClient, } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-receptek',
   standalone: true,
   imports: [
     CommonModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
     RouterModule,
+  
   ],
   templateUrl: './receptek.component.html',
   styleUrls: ['./receptek.component.css']
@@ -28,39 +29,41 @@ export class ReceptekComponent implements OnInit {
   allTags: string[] = [];
   tagGroups: { [key: string]: string[] } = {};
   activeFilter: string | null = null;
-  filteredRecipes: any[] = [];
+  filteredRecipes: Receptek[] = [];
   recipes: Receptek[] = [];
   
- 
-
-  constructor(private tagService: TagsComponent, private http: HttpClient) {}
+  constructor(private tagsComponent: TagsComponent, private http: HttpClient) {}
 
   ngOnInit() {
-    this.allTags = this.tagService.getAllTags();
-    this.tagGroups = this.tagService.getTagGroups();
-    this.setDefaultFilter();
-    this.http.get<Receptek[]>('/assets/receptek.json').subscribe(data => {
-      this.recipes = data;
+    this.http.get<Receptek[]>('/assets/receptek.json').subscribe({
+      next: (data) => {
+        this.recipes = data;
+        this.filteredRecipes = [...data];
+        this.initTags();
+      },
+      error: (err) => console.error('Hiba a receptek betöltésekor:', err)
     });
+  }
 
+  private initTags() {
+    // Ha a TagsComponent-ben vannak a tag metódusok
+    this.allTags = this.tagsComponent['getAllTags']?.() || [];
+    this.tagGroups = this.tagsComponent['getTagGroups']?.() || {};
+    this.setDefaultFilter();
   }
 
   setDefaultFilter() {
-    this.activeFilter = null;
-    this.filterRecipes(null);
+    this.activeFilter = 'összes';
+    this.filterRecipes('összes');
   }
 
   filterRecipes(tag: string | null): void {
     this.activeFilter = tag;
-    if (tag === null) {
-      this.filteredRecipes = [...this.recipes];
-    } else {
-      this.filteredRecipes = this.recipes.filter(recipe => 
-        recipe.tags.some(recipeTag => 
-          this.tagService.isValidTag(recipeTag) 
-        )
-      );
-    }
+    this.filteredRecipes = tag === null || tag === 'összes' 
+      ? [...this.recipes]
+      : this.recipes.filter(recipe => 
+          recipe.tags.some(t => t.toLowerCase() === tag.toLowerCase())
+        );
   }
 
   objectKeys(obj: any): string[] {
@@ -68,7 +71,6 @@ export class ReceptekComponent implements OnInit {
   }
 
   isSelected(tag: string): boolean {
-    if (tag === 'összes') return this.activeFilter === null;
-    return this.activeFilter === tag;
+    return this.activeFilter === tag || (tag === 'összes' && this.activeFilter === null);
   }
 }
