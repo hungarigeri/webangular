@@ -14,5 +14,6 @@ export const routes: Routes = [
       { 
         path: 'recept/:id', 
         loadComponent: () => import('./pages/recept-details/recept-details.component').then(m => m.ReceptDetailsComponent)
-      }
+      },
+      { path: 'posztok/:id', loadComponent: () => import('./pages/posztoktartalma/posztoktartalma.component').then(m => m.PosztoktartalmaComponent) }
     ]

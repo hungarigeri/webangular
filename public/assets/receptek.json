@@ -6,7 +6,7 @@
       "cookTime": 15,
       "difficulty": "Közepes",
       "image": "assets/pizza.jpg",
-      "tags": ["olasz", "tészta", "vegetáriánus"],
+      "tags": ["olasz", "tészta", "vegetáriánus" ,"angol videó"],
       "description": "Tökéletes pizzatészta kezdőknek és profiknak egyaránt"
     },
 
@@ -17,7 +17,17 @@
         "cookTime": 22,
         "difficulty": "Közepes",
         "image": "assets/brownie.jpg",
-        "tags": ["desszert", "süti", "usa"],
-        "description": "Egy csokoládés, szeletelt sütemény"
+        "tags": ["desszert", "süti", "usa","nincs videó"],
+        "description": "Egy csokoládés, szeletelt sütemény , finom omlós"
+    },
+    {
+      "id": 3,
+      "title": "Pesto brokkoli- Gnocchi",
+      "prepTime": 30 ,
+      "cookTime": 15,
+      "difficulty": "Közepes",
+      "image": "assets/pesto.jpg",
+      "description": "Egyszerű gyorsan kész, és nagyon finom, Pesto brokkoli- gnocchi!",
+      "tags": ["tészta" , "olasz","magyar videó"]
     }
   ]

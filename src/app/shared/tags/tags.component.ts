@@ -12,10 +12,13 @@ export class TagsComponent {
     'gluténmentes',
     'vegan',
     'hideg étel',
-    'elme'
+    'magyar videó',
+    'angol videó',
+    'nincs videó'
   ];
 
   private tagGroups: Record<string, string[]> = {
+    'Video':['magyar videó','angol videó', 'nincs videó'],
     'Főételek': ['olasz', 'vegetáriánus', 'vegan'],
     'Desszertek': ['desszert', 'gluténmentes'],
     'Snackek': ['gyors', 'hideg étel']

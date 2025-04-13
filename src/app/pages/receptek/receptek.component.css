@@ -45,7 +45,7 @@
     color: #02534d;
   }
   
-  .recipe-meta mat-icon {
+  .recipe-meta .mat-icon {
     vertical-align: middle;
     margin-right: 0.3rem;
   }

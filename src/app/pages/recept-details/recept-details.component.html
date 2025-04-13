@@ -7,12 +7,14 @@
     
     <img mat-card-image [src]="recipe.image" [alt]="recipe.title">
     <br>
-    <div class="yt"><youtube-player  
+    <div class="yt">
+      <youtube-player  
       *ngIf="recipe?.ytlink"
       [videoId]="recipe.ytlink"
       [width]="'750'"
       [height]="'400'">
-      </youtube-player>  </div>
+      </youtube-player>  
+    </div>
     
     
     <br>
@@ -25,28 +27,29 @@
       </mat-card-subtitle>
     </mat-card-header>
     
-    <mat-card-content>
-      <p>{{recipe.description}}</p>
-      
-      <mat-divider></mat-divider>
-      
-      <h3>Hozzávalók</h3>
-      <mat-list>
-        <mat-list-item *ngFor="let item of recipe.ingredients">
-          <mat-icon matListItemIcon>check_circle</mat-icon>
-          <div matListItemTitle>{{item}}</div>
-        </mat-list-item>
-      </mat-list>
-      
-      <mat-divider></mat-divider>
-      
-      <h3>Elkészítés</h3>
-      <mat-list>
-        <mat-list-item *ngFor="let step of recipe.steps; let i = index">
-          <div matListItemTitle>{{i+1}}. {{step}}</div>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
+ <mat-card-content>
+  <p class="multiline-text">{{recipe.description}}</p>
+  
+  <mat-divider></mat-divider>
+  
+  <h3>Hozzávalók</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let item of recipe.ingredients">
+      <mat-checkbox [checked]="isIngredientChecked(item)" (change)="toggleIngredient(item, $event.checked)">
+        <span class="multiline-text">{{item}}</span>
+      </mat-checkbox>
+    </mat-list-item>
+  </mat-list>
+  
+  <mat-divider></mat-divider>
+  
+  <h3>Elkészítés</h3>
+<mat-list>
+  <mat-list-item class="elkesz" *ngFor="let step of recipe.steps; let i = index">
+    <div mat-line class="multiline-text">{{i+1}}. {{step}}</div>
+  </mat-list-item>
+</mat-list>
+</mat-card-content>
   </mat-card>
   
   <div *ngIf="!recipe" class="not-found">

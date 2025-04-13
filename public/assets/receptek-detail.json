@@ -23,5 +23,59 @@
         "Lisztezett felületen kinyújtjuk és tetszés szerint feltöltjük"
       ],
       "ytlink": "IBNHzK5v5vg"
+    },
+    {
+      "id": 1,
+      "title": "Házi pizzatészta",
+      "prepTime": 20,
+      "cookTime": 15,
+      "difficulty": "Közepes",
+      "image": "assets/pizza.jpg",
+      "description": "Tökéletes pizzatészta kezdőknek és profiknak egyaránt",
+      "ingredients": [
+        "500g finomliszt",
+        "7g száraz élesztő",
+        "1 teáskanál cukor",
+        "1 teáskanál só",
+        "3 evőkanál olívaolaj",
+        "300ml langyos víz"
+      ],
+      "steps": [
+        "Az élesztőt a cukorral és egy kis langyos vízzel felfuttatjuk",
+        "A lisztet sóval elkeverjük, majd közepébe mélyedést készítünk",
+        "Hozzáadjuk az élesztős keveréket, olajat és a vizet",
+        "Kemény tésztát gyúrunk és letakarva kelni hagyjuk 1 órán át",
+        "Lisztezett felületen kinyújtjuk és tetszés szerint feltöltjük"
+      ],
+      "ytlink": "IBNHzK5v5vg"
+    },
+    {
+      "id": 3,
+      "title": "Pesto brokkoli- Gnocchi",
+      "prepTime": 30 ,
+      "cookTime": 15,
+      "difficulty": "Közepes",
+      "image": "assets/pesto.jpg",
+      "description": "Egyszerű gyorsan kész, és nagyon finom, Pesto brokkoli- gnocchi!",
+      "ingredients": [
+        "2 ev étolaj/ olívaolaj",
+        "3 gerezd fokhagyma/ karikákra vágva",
+        "1 nagy csipet fűszerkömény",
+        "500 g sertés darált hús",
+        "600 g brokkoli fagyasztott/ friss",
+        "Szükség szerint: víz",
+        "500 g Gnocchi száraz tészta",
+        "150 ml bazsalikomos pesto szósz",
+        "Szükség szerint friss bazsalikom",
+        "A tálalashoz: reszelt parmezán"
+      ],
+      "steps": [
+        "A tésztát főzzük meg a csomagoláson található módon majd szűrjük le tegyük félre.A brokkolit kevés vízben kezdjük el főzni, éppen csak főzzük. A serpenyőben az olajat felforrosítjuk, adjuk hozzá a karikára vágott fokhagymát, a csipet köménymagot forgassuk meg.",
+        "Dobjuk hozzá a darált húst, fehéredésig pirítsuk.",
+        "Egy merőkanáll segítségével szedjük ki a megpuhult brokkolit, és adjuk hozzá a húshoz. A brokkoli főző vizéből merjünk ki két- három merőkanálnyit majd kavarjuk őssze. Izesítésnek mehet hozzá a bazsalikomos pesto szósz, végül az egészet közepes lángon főzzük puhára.",
+        "Adjunk hozzá friss bazsalikom levelet reszelt parmezánt, rotyogtasduk jó szaftosra.",
+        "Ha a zöldség és a hús megpuhult, adjuk hozzá a lecsöpögtetett tésztát tálaljuk- szórjuk meg bőven a reszelt sajttal.Egyszerű gyorsan kész, és nagyon finom! Jó étvágyat kívánok! "
+      ],
+      "ytlink": "SgaxNGDNcks"
     }
   ]

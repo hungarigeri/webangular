@@ -1,0 +1,154 @@
+.contact-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  .contact-container .header-section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .contact-container .header-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-container .header-section .intro-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: auto !important;
+  }
+  
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .contact-card, 
+  .info-card, 
+  .newsletter-card {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  
+  .contact-method mat-icon {
+    margin-right: 1rem;
+    color: #3f51b5;
+  }
+  
+  .contact-method a {
+    color: #3f51b5;
+    text-decoration: none;
+  }
+  
+  .contact-method a:hover {
+    text-decoration: underline;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.5rem;
+    color: #333;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .terms {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+  }
+  
+  button[mat-raised-button] {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+  }
+
+  .recipe-form-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-section {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .time-fields {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .time-fields > * {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .ingredient-row,
+  .step-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  .add-button {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  /* Additional improvements */
+  button.add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.add-button:hover {
+    background-color: #45a049;
+  }
+  
+  .form-section h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }

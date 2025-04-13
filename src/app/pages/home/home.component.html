@@ -11,7 +11,7 @@
   <h2>Kiemelt receptek</h2>
   <section class="featured">
     <mat-card class="recipe-card" *ngFor="let recipe of featuredRecipes">
-      <img mat-card-image [src]="recipe.imageUrl" [alt]="recipe.title">
+      <img mat-card-image [src]="recipe.imageUrl" [alt]="recipe.title" class="img">
       <mat-card-content>
         <h3>{{recipe.title}}</h3>
         <div class="meta">
@@ -31,7 +31,7 @@
           <mat-panel-description>{{post.createdAt | date:'yyyy.MM.dd.'}}</mat-panel-description>
         </mat-expansion-panel-header>
         <p>{{post.excerpt}}</p>
-        <button mat-button [routerLink]="['/blog', post.id]" class="szoveg">Tovább olvasom</button>
+        <button mat-button [routerLink]="['/posztok', post.id]" class="szoveg">Tovább olvasom</button>
       </mat-expansion-panel>
     </mat-accordion>
   </section>
@@ -40,11 +40,16 @@
     <p>Nincsenek elérhető cikkek</p>
   </div>
   <section class="ingredient-spotlight">
+  
     <h2>Hónap hozzávalója: {{featuredIngredient.name}}</h2>
-    <mat-chip-listbox>
-      <mat-chip *ngFor="let recipe of ingredientRecipes" [routerLink]="['/recept', recipe.id]">
+    <mat-card-content class="ingredient">
+    <img mat-card-image [src]="featuredIngredient.image" [alt]="featuredIngredient.name" class="img">
+    <mat-panel-description class="szoveg2">{{featuredIngredient.description}}</mat-panel-description>
+    <mat-chip-listbox >
+      <mat-chip class="picker"  *ngFor="let recipe of ingredientRecipes" [routerLink]="['/recept', recipe.id]">
         {{recipe.title}}
       </mat-chip>
     </mat-chip-listbox>
+  </mat-card-content>
   </section>
 </div>

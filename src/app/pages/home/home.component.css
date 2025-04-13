@@ -27,11 +27,12 @@
   gap: 1rem;
   padding: 2rem;
 
+}
   .recipe-card {
     flex: 1 1 300px;
     max-width: 400px;
   }
-}
+
 
 .recipe-card-ingredient
 {
@@ -52,4 +53,22 @@
 {
   background-color: #f3e5c8;
   color: #02534d !important;
+}
+.szoveg2
+{
+ font-weight: bold;
+  color: #02534d !important;
+}
+::ng-deep mat-chip.picker {
+  background-color: #f3e5c8 !important;
+  color: #02534d !important;
+}
+
+img{
+  height: 200px;
+  object-fit: cover;
+}
+.ingredient
+{
+  background-color: white;
 }

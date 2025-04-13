@@ -1,0 +1,62 @@
+{
+  "id": 1,
+  "title": "Maceszgranola tahinis, datolyaszirupos joghurttal",
+  "createdAt": "2025-04-11T00:00:00.000Z",
+  "excerpt": "Hamarosan kezdődik a zsidó húsvét is, vagyis a Pészach nyolcnapos időszaka (idén április 12-20-ig tart). A zsidó hagyományok szerint ilyenkor ünnepi kenyérként pászkát fogyasztanak...",
+  "content": {
+    "description": "Pészach-specialitás: ropogós maceszgranola tahinis joghurttal, aszalt gyümölcsökkel. Desszert vagy különleges reggeli.",
+    "ingredients": {
+      "granola": [
+        "150 g macesztöret",
+        "100 g sótlan tökmag",
+        "100 g dió",
+        "50 g nádcukor",
+        "80 g méz",
+        "40 ml olívaolaj",
+        "1 kávéskanál só",
+        "1 teáskanál fahéj",
+        "80 g aszalt meggy/vörösáfonya",
+        "50 g aszalt sárgabarack"
+      ],
+      "yogurt": [
+        "500 ml görög joghurt",
+        "40 g méz",
+        "40 g datolyaszirup",
+        "40 g tahini"
+      ]
+    },
+    "instructions": [
+      "Sütő előmelegítése 160°C-ra",
+      "Granola alap összekeverése (kivéve gyümölcsök)",
+      "Egyrétegű elhelyezés sütőpapíron",
+      "20 perc sütés (félidőben keverés)",
+      "Teljes kihűlés",
+      "Aszalt gyümölcsök hozzáadása",
+      "Joghurtkrémez elkészítése"
+    ],
+    "tips": [
+      "Magok helyettesíthetők mandulával/mogyoróval",
+      "Pészach-barát kovásztalan alapanyagok",
+      "Extra ropogósság szezámmaggal",
+      "Tálalás fagylalttal vagy friss gyümölccsel"
+    ],
+    "serving": "4 adag",
+    "prepTime": "30 perc",
+    "cookTime": "20 perc",
+    "difficulty": "könnyű",
+    "tags": [
+      "pészach",
+      "zsidó konyha",
+      "vegetáriánus",
+      "desszert",
+      "reggeli"
+    ],
+    "origin": "Adaptálva Michele Streit Heilbrun receptjéből"
+  },
+  "nutrition": {
+    "calories": "~380 kcal/adag",
+    "carbs": "45g",
+    "protein": "8g",
+    "fat": "20g"
+  }
+}

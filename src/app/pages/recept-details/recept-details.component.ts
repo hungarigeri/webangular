@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Receptektartalom } from '../../models/receptektartalom.model';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 
 @Component({
@@ -23,7 +24,8 @@ import { Receptektartalom } from '../../models/receptektartalom.model';
     MatDividerModule,
     RouterModule,
     YouTubePlayerModule, // Module-t importálj, nem a komponenst
-    HttpClientModule
+    HttpClientModule,
+    MatCheckbox
   ],
   templateUrl: './recept-details.component.html',
   styleUrls: ['./recept-details.component.css']
@@ -36,6 +38,21 @@ export class ReceptDetailsComponent implements OnInit {
   recipeId = Number(this.route.snapshot.paramMap.get('id'));
   recipes: Receptektartalom[] = [];
   recipe?: Receptektartalom;
+  checkedIngredients: string[] = [];
+
+  isIngredientChecked(ingredient: string): boolean {
+    return this.checkedIngredients.includes(ingredient);
+  }
+  
+  toggleIngredient(ingredient: string, isChecked: boolean): void {
+    if (isChecked) {
+      if (!this.checkedIngredients.includes(ingredient)) {
+        this.checkedIngredients.push(ingredient);
+      }
+    } else {
+      this.checkedIngredients = this.checkedIngredients.filter(item => item !== ingredient);
+    }
+  }
 
   ngOnInit() {
     this.loadRecipes();

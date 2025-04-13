@@ -53,9 +53,9 @@ export class HomeComponent implements OnInit{
 
 // Add these recipes for the ingredient
 ingredientRecipes = [
-  { id: 1, title: 'Pesto szósz' },
-  { id: 2, title: 'Margherita pizza' },
-  { id: 3, title: 'Caprese saláta' }
+  { id: 3, title: 'Pesto brokkoli- Gnocchi'},
+  { id: 1, title: 'Margherita pizza'},
+  { id: 4, title: 'Caprese saláta' }
 ];
 
 featuredRecipes = [
@@ -67,6 +67,15 @@ featuredRecipes = [
     difficulty: 'medium',
     imageUrl: 'assets/pizza.jpg'
   },
+  {
+    id: 2,
+    title: "Házi brownie",
+    prepTime: 31,
+    cookTime: 22,
+    difficulty: "Közepes",
+    imageUrl: "assets/brownie.jpg",
+   
+  }
   // További receptek...
 ];
 
