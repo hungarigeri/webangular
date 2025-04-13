@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -6,18 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Receptektartalom } from '../../models/receptektartalom.model';
 
-interface Recipe {
-  id: number;
-  title: string;
-  prepTime: number;
-  cookTime: number;
-  difficulty: string;
-  image: string;
-  ingredients: string[];
-  steps: string[];
-  description: string;
-}
 
 @Component({
   selector: 'app-recept-details',
@@ -30,48 +22,43 @@ interface Recipe {
     MatListModule,
     MatDividerModule,
     RouterModule,
+    YouTubePlayerModule, // Module-t importálj, nem a komponenst
+    HttpClientModule
   ],
   templateUrl: './recept-details.component.html',
   styleUrls: ['./recept-details.component.css']
 })
-export class ReceptDetailsComponent {
+export class ReceptDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private http = inject(HttpClient);
+  private router = inject(Router);
+
   recipeId = Number(this.route.snapshot.paramMap.get('id'));
-  
-  // Recept adatbázisunk
-  private recipes: Recipe[] = [
-    {
-      id: 1,
-      title: 'Házi pizzatészta',
-      prepTime: 20,
-      cookTime: 15,
-      difficulty: 'Közepes',
-      image: 'assets/pizza.jpg',
-      description: 'Tökéletes pizzatészta kezdőknek és profiknak egyaránt',
-      ingredients: [
-        '500g finomliszt',
-        '7g száraz élesztő',
-        '1 teáskanál cukor',
-        '1 teáskanál só',
-        '3 evőkanál olívaolaj',
-        '300ml langyos víz'
-      ],
-      steps: [
-        'Az élesztőt a cukorral és egy kis langyos vízzel felfuttatjuk',
-        'A lisztet sóval elkeverjük, majd közepébe mélyedést készítünk',
-        'Hozzáadjuk az élesztős keveréket, olajat és a vizet',
-        'Kemény tésztát gyúrunk és letakarva kelni hagyjuk 1 órán át',
-        'Lisztezett felületen kinyújtjuk és tetszés szerint feltöltjük'
-      ]
-    },
-    // További receptek...
-  ];
+  recipes: Receptektartalom[] = [];
+  recipe?: Receptektartalom;
 
-  // Aktuális recept
-  recipe = this.recipes.find(r => r.id === this.recipeId);
+  ngOnInit() {
+    this.loadRecipes();
+  }
 
-  // Vissza gomb funkció
+  private loadRecipes() {
+    this.http.get<Receptektartalom[]>('/assets/receptek-detail.json').subscribe({
+      next: (data) => {
+        this.recipes = data;
+        this.recipe = this.recipes.find(r => r.id === this.recipeId);
+        
+        if (!this.recipe) {
+          console.warn(`Nem található recept ${this.recipeId} ID-val`);
+        }
+      },
+      error: (err) => {
+        console.error('Hiba a receptek betöltésekor:', err);
+        this.router.navigate(['/error']); // Átirányítás hiba esetén
+      }
+    });
+  }
+
   goBack() {
-    window.history.back();
+    this.router.navigate(['/receptek']); 
   }
 }

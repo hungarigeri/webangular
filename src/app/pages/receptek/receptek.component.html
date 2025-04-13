@@ -1,3 +1,4 @@
+<div class="test">
 <div class="filter-container">
     <!-- Csoportosított tagek -->
     <div *ngFor="let groupName of objectKeys(tagGroups)" class="tag-group">
@@ -22,6 +23,11 @@
           Összes recept
         </mat-chip-option>
       </mat-chip-listbox>
+      <mat-chip-listbox>
+        <mat-chip-option>
+          Videó
+        </mat-chip-option>
+      </mat-chip-listbox>
     </div>
   </div>
   
@@ -41,9 +47,10 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" [routerLink]="['/recept', recipe.id]">
+        <button mat-raised-button class="custom-recipe-btn" [routerLink]="['/recept', recipe.id]">
           Recept megtekintése
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
+</div>

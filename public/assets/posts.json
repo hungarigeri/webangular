@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "title": "10 tipp a tökéletes steakhez",
+      "createdAt": "2023-05-25T12:34:56.789Z",
+      "excerpt": "Ismerd meg a hús pácolásának titkait..."
+    },
+    {
+        "id": 2,
+        "title": "Pizza a legjobb haverom",
+        "createdAt": "2024-02-29T12:34:56.789Z",
+        "excerpt": "Össze barátkoztam egy pizzával..."
+      }
+    
+  ]

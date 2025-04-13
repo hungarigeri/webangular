@@ -1,0 +1,27 @@
+ [
+    {
+      "id": 1,
+      "title": "Házi pizzatészta",
+      "prepTime": 20,
+      "cookTime": 15,
+      "difficulty": "Közepes",
+      "image": "assets/pizza.jpg",
+      "description": "Tökéletes pizzatészta kezdőknek és profiknak egyaránt",
+      "ingredients": [
+        "500g finomliszt",
+        "7g száraz élesztő",
+        "1 teáskanál cukor",
+        "1 teáskanál só",
+        "3 evőkanál olívaolaj",
+        "300ml langyos víz"
+      ],
+      "steps": [
+        "Az élesztőt a cukorral és egy kis langyos vízzel felfuttatjuk",
+        "A lisztet sóval elkeverjük, majd közepébe mélyedést készítünk",
+        "Hozzáadjuk az élesztős keveréket, olajat és a vizet",
+        "Kemény tésztát gyúrunk és letakarva kelni hagyjuk 1 órán át",
+        "Lisztezett felületen kinyújtjuk és tetszés szerint feltöltjük"
+      ],
+      "ytlink": "IBNHzK5v5vg"
+    }
+  ]

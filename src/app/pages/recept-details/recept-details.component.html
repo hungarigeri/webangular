@@ -2,10 +2,22 @@
     <button mat-icon-button class="back-button" (click)="goBack()">
       <mat-icon>arrow_back</mat-icon>
     </button>
+
+    
     
     <img mat-card-image [src]="recipe.image" [alt]="recipe.title">
+    <br>
+    <div class="yt"><youtube-player  
+      *ngIf="recipe?.ytlink"
+      [videoId]="recipe.ytlink"
+      [width]="'750'"
+      [height]="'400'">
+      </youtube-player>  </div>
     
+    
+    <br>
     <mat-card-header>
+ 
       <mat-card-title>{{recipe.title}}</mat-card-title>
       <mat-card-subtitle>
         <span><mat-icon>schedule</mat-icon> {{recipe.prepTime + recipe.cookTime}} perc</span>

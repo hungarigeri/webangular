@@ -5,7 +5,7 @@
     padding: 0 20px;
     font-family: 'Roboto', sans-serif;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+    }
   
   .navbar-container {
     display: flex;
@@ -17,6 +17,7 @@
   }
   #logo{
     width: 6rem;
+
   }
  
   /* Brand/logo stílus */

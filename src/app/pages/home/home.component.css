@@ -1,25 +1,55 @@
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/taylor-kiser-1YhSMc1IywE-unsplash.jpg');
-    background-size: cover;
-    color: white;
-    padding: 4rem 1rem;
-    text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/taylor-kiser-1YhSMc1IywE-unsplash.jpg");
+  background-size: cover;
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+::ng-deep .custom-recipe-btn {
+  background-color: #f3e5c8 !important;
+  color: #02534d !important;
+  font-weight: bold;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s !important;
+}
+
+.custom-recipe-btn:hover {
+  color: #d97706 !important;
+  background-color: #f3e5c8 !important;
+}
+
+.featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+
+  .recipe-card {
+    flex: 1 1 300px;
+    max-width: 400px;
   }
-  
-  .featured {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 2rem;
-    
-    .recipe-card {
-      flex: 1 1 300px;
-      max-width: 400px;
-    }
-  }
-  
-  .meta {
-    display: flex;
-    gap: 1rem;
-    color: #666;
-  }
+}
+
+.recipe-card-ingredient
+{
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  color: #666;
+}
+.test {
+  background-color: #f3e5c8;
+  color: #02534d;
+}
+.szoveg
+{
+  background-color: #f3e5c8;
+  color: #02534d !important;
+}
