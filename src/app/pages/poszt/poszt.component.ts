@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-poszt',
   imports: [],
   templateUrl: './poszt.component.html',
-  styleUrl: './poszt.component.css'
+  styleUrl: './poszt.component.css',
 })
-export class PosztComponent {
-
-}
+export class PosztComponent {}

@@ -1,9 +1,15 @@
 <div class="test">
-<section class="hero">
+  <section class="hero">
     <div class="hero-content">
       <h1>Üdvözöl a Chef Vlog!</h1>
-      <p>Fedezd fel a legfinomabb recepteket és olvasd el gasztro-tippjeinket</p>
-      <button mat-raised-button class="custom-recipe-btn" routerLink="/receptek">
+      <p>
+        Fedezd fel a legfinomabb recepteket és olvasd el gasztro-tippjeinket
+      </p>
+      <button
+        mat-raised-button
+        class="custom-recipe-btn"
+        routerLink="/receptek"
+      >
         Fedezd fel a recepteket
       </button>
     </div>
@@ -11,13 +17,32 @@
   <h2>Kiemelt receptek</h2>
   <section class="featured">
     <mat-card class="recipe-card" *ngFor="let recipe of featuredRecipes">
-      <img mat-card-image [src]="recipe.imageUrl" [alt]="recipe.title" class="img">
+      <img
+        mat-card-image
+        [src]="recipe.imageUrl"
+        [alt]="recipe.title"
+        class="img"
+      />
       <mat-card-content>
-        <h3>{{recipe.title}}</h3>
+        <h3>{{ recipe.title }}</h3>
         <div class="meta">
-          <span><mat-icon>schedule</mat-icon> <br> {{recipe.prepTime + recipe.cookTime}} perc</span>
-          <span><mat-icon>restaurant</mat-icon><br> {{recipe.difficulty | difficulty}}</span>
-          <span><button mat-raised-button class="custom-recipe-btn" [routerLink]="['/recept', recipe.id]">Nézd meg a receptet!</button></span>
+          <span
+            ><mat-icon>schedule</mat-icon> <br />
+            {{ recipe.prepTime + recipe.cookTime }} perc</span
+          >
+          <span
+            ><mat-icon>restaurant</mat-icon><br />
+            {{ recipe.difficulty | difficulty }}</span
+          >
+          <span
+            ><button
+              mat-raised-button
+              class="custom-recipe-btn"
+              [routerLink]="['/recept', recipe.id]"
+            >
+              Nézd meg a receptet!
+            </button></span
+          >
         </div>
       </mat-card-content>
     </mat-card>
@@ -27,29 +52,43 @@
     <mat-accordion>
       <mat-expansion-panel *ngFor="let post of latestPosts">
         <mat-expansion-panel-header>
-          <mat-panel-title>{{post.title}}</mat-panel-title>
-          <mat-panel-description>{{post.createdAt | date:'yyyy.MM.dd.'}}</mat-panel-description>
+          <mat-panel-title>{{ post.title }}</mat-panel-title>
+          <mat-panel-description>{{
+            post.createdAt | date : "yyyy.MM.dd."
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
-        <p>{{post.excerpt}}</p>
-        <button mat-button [routerLink]="['/posztok', post.id]" class="szoveg">Tovább olvasom</button>
+        <p>{{ post.excerpt }}</p>
+        <button mat-button [routerLink]="['/posztok', post.id]" class="szoveg">
+          Tovább olvasom
+        </button>
       </mat-expansion-panel>
     </mat-accordion>
   </section>
-  
+
   <div *ngIf="latestPosts.length === 0">
     <p>Nincsenek elérhető cikkek</p>
   </div>
   <section class="ingredient-spotlight">
-  
-    <h2>Hónap hozzávalója: {{featuredIngredient.name}}</h2>
+    <h2>Hónap hozzávalója: {{ featuredIngredient.name }}</h2>
     <mat-card-content class="ingredient">
-    <img mat-card-image [src]="featuredIngredient.image" [alt]="featuredIngredient.name" class="img">
-    <mat-panel-description class="szoveg2">{{featuredIngredient.description}}</mat-panel-description>
-    <mat-chip-listbox >
-      <mat-chip class="picker"  *ngFor="let recipe of ingredientRecipes" [routerLink]="['/recept', recipe.id]">
-        {{recipe.title}}
-      </mat-chip>
-    </mat-chip-listbox>
-  </mat-card-content>
+      <img
+        mat-card-image
+        [src]="featuredIngredient.image"
+        [alt]="featuredIngredient.name"
+        class="img"
+      />
+      <mat-panel-description class="szoveg2">{{
+        featuredIngredient.description
+      }}</mat-panel-description>
+      <mat-chip-listbox>
+        <mat-chip
+          class="picker"
+          *ngFor="let recipe of ingredientRecipes"
+          [routerLink]="['/recept', recipe.id]"
+        >
+          {{ recipe.title }}
+        </mat-chip>
+      </mat-chip-listbox>
+    </mat-card-content>
   </section>
 </div>

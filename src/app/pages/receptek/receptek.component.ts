@@ -20,10 +20,9 @@ import { Receptek } from '../../models/receptek.models';
     MatIconModule,
     MatChipsModule,
     RouterModule,
-  
   ],
   templateUrl: './receptek.component.html',
-  styleUrls: ['./receptek.component.css']
+  styleUrls: ['./receptek.component.css'],
 })
 export class ReceptekComponent implements OnInit {
   allTags: string[] = [];
@@ -31,7 +30,7 @@ export class ReceptekComponent implements OnInit {
   activeFilter: string | null = null;
   filteredRecipes: Receptek[] = [];
   recipes: Receptek[] = [];
-  
+
   constructor(private tagsComponent: TagsComponent, private http: HttpClient) {}
 
   ngOnInit() {
@@ -41,7 +40,7 @@ export class ReceptekComponent implements OnInit {
         this.filteredRecipes = [...data];
         this.initTags();
       },
-      error: (err) => console.error('Hiba a receptek betöltésekor:', err)
+      error: (err) => console.error('Hiba a receptek betöltésekor:', err),
     });
   }
 
@@ -59,11 +58,12 @@ export class ReceptekComponent implements OnInit {
 
   filterRecipes(tag: string | null): void {
     this.activeFilter = tag;
-    this.filteredRecipes = tag === null || tag === 'összes' 
-      ? [...this.recipes]
-      : this.recipes.filter(recipe => 
-          recipe.tags.some(t => t.toLowerCase() === tag.toLowerCase())
-        );
+    this.filteredRecipes =
+      tag === null || tag === 'összes'
+        ? [...this.recipes]
+        : this.recipes.filter((recipe) =>
+            recipe.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
+          );
   }
 
   objectKeys(obj: any): string[] {
@@ -71,6 +71,9 @@ export class ReceptekComponent implements OnInit {
   }
 
   isSelected(tag: string): boolean {
-    return this.activeFilter === tag || (tag === 'összes' && this.activeFilter === null);
+    return (
+      this.activeFilter === tag ||
+      (tag === 'összes' && this.activeFilter === null)
+    );
   }
 }

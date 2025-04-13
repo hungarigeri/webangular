@@ -1,109 +1,103 @@
 .recipe-detail-card {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #f3e5c8;
-  }
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f3e5c8;
+}
 
-  .mat-list-item {
-    height: auto !important;         /* Fix magasság felülírása */
-    white-space: normal !important;  /* Több sor engedélyezése */
-    align-items: flex-start !important; /* Igazítás a tetejére */
-    padding: 12px 16px !important;   /* Térköz a tartalom körül */
-  }
-  
-  /* Checkbox-ok formázása */
-  .mat-checkbox {
-    white-space: normal !important;
-    display: block !important;
-    margin: 4px 0 !important;
-   
-  }
-  .elkesz
-  {
-    display: block !important;
-    height: auto !important;
-    align-items: flex-start !important;
-  
-  }
-  
-  /* Lépések listája */
-  .mat-list-item .multiline-text {
-    padding: 8px 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* Elválasztók térköze */
-  .mat-divider {
-    margin: 1.5rem 0 !important;
-  }
-  .multiline-text {
-    white-space: pre-line !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-    display: block !important;
-    width: 100% !important;
-    line-height: 1.5;
-  }
-  
-  
-  .back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    background-color: rgba(255,255,255,0.7);
-  }
-  
-  .mat-card-header {
-    margin-bottom: 1rem;
-  }
-  
-  .mat-card-title {
-    font-size: 1.8rem;
-    color: #02534d;
-  }
-  
-  .mat-card-subtitle {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-  
-  
-  h3 {
-    color: #02534d;
-    margin-bottom: 1rem;
-  }
-  
-  .not-found {
-    text-align: center;
-    padding: 2rem;
-    color: #02534d;
-  }
-  
-  .not-found mat-icon {
-    font-size: 3rem;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 1rem;
-  }
+.mat-list-item {
+  height: auto !important; /* Fix magasság felülírása */
+  white-space: normal !important; /* Több sor engedélyezése */
+  align-items: flex-start !important; /* Igazítás a tetejére */
+  padding: 12px 16px !important; /* Térköz a tartalom körül */
+}
 
-    .yt {
-      display: flex;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-  
-  .ingredient-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .ingredient-checkbox {
-    margin-bottom: 8px;
-    display: block;
-  }
- 
+/* Checkbox-ok formázása */
+.mat-checkbox {
+  white-space: normal !important;
+  display: block !important;
+  margin: 4px 0 !important;
+}
+.elkesz {
+  display: block !important;
+  height: auto !important;
+  align-items: flex-start !important;
+}
+
+/* Lépések listája */
+.mat-list-item .multiline-text {
+  padding: 8px 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Elválasztók térköze */
+.mat-divider {
+  margin: 1.5rem 0 !important;
+}
+.multiline-text {
+  white-space: pre-line !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  display: block !important;
+  width: 100% !important;
+  line-height: 1.5;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.mat-card-header {
+  margin-bottom: 1rem;
+}
+
+.mat-card-title {
+  font-size: 1.8rem;
+  color: #02534d;
+}
+
+.mat-card-subtitle {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+h3 {
+  color: #02534d;
+  margin-bottom: 1rem;
+}
+
+.not-found {
+  text-align: center;
+  padding: 2rem;
+  color: #02534d;
+}
+
+.not-found mat-icon {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.yt {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ingredient-checkbox {
+  margin-bottom: 8px;
+  display: block;
+}

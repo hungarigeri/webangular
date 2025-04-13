@@ -8,9 +8,8 @@ describe('PosztoktartalmaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PosztoktartalmaComponent]
-    })
-    .compileComponents();
+      imports: [PosztoktartalmaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PosztoktartalmaComponent);
     component = fixture.componentInstance;

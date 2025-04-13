@@ -1,5 +1,4 @@
-import { Component, Injectable } from "@angular/core";
-
+import { Component, Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class TagsComponent {
@@ -14,14 +13,14 @@ export class TagsComponent {
     'hideg étel',
     'magyar videó',
     'angol videó',
-    'nincs videó'
+    'nincs videó',
   ];
 
   private tagGroups: Record<string, string[]> = {
-    'Video':['magyar videó','angol videó', 'nincs videó'],
-    'Főételek': ['olasz', 'vegetáriánus', 'vegan'],
-    'Desszertek': ['desszert', 'gluténmentes'],
-    'Snackek': ['gyors', 'hideg étel']
+    Video: ['magyar videó', 'angol videó', 'nincs videó'],
+    Főételek: ['olasz', 'vegetáriánus', 'vegan'],
+    Desszertek: ['desszert', 'gluténmentes'],
+    Snackek: ['gyors', 'hideg étel'],
   };
 
   getAllTags(): string[] {
@@ -29,7 +28,7 @@ export class TagsComponent {
   }
 
   getTagGroups(): Record<string, string[]> {
-    return {...this.tagGroups};
+    return { ...this.tagGroups };
   }
 
   // Új metódus a tag ellenőrzéshez

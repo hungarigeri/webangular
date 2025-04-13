@@ -17,7 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
 @Component({
   selector: 'app-posztoktartalma',
   standalone: true,
-  imports: [ 
+  imports: [
     CommonModule,
     MatCardModule,
     MatButtonModule,
@@ -30,36 +30,35 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCheckboxModule,
     MatExpansionModule,
     MatSpinner,
-    MatChipsModule
+    MatChipsModule,
   ],
   templateUrl: './posztoktartalma.component.html',
-  styleUrl: './posztoktartalma.component.css'
+  styleUrl: './posztoktartalma.component.css',
 })
 export class PosztoktartalmaComponent implements OnInit {
   private http = inject(HttpClient);
   private route = inject(ActivatedRoute);
-  
+
   post?: Posttartalmak;
   isLoading = true;
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       const postId = params['id'];
       this.loadPostDetails(postId);
     });
   }
 
   loadPostDetails(postId: number): void {
-    this.http.get<Posttartalmak>(`assets/posts-detail.json`)
-      .subscribe({
-        next: (data) => {
-          this.post = data;
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Error loading post details:', err);
-          this.isLoading = false;
-        }
-      });
+    this.http.get<Posttartalmak>(`assets/posts-detail.json`).subscribe({
+      next: (data) => {
+        this.post = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error loading post details:', err);
+        this.isLoading = false;
+      },
+    });
   }
 }

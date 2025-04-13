@@ -26,16 +26,13 @@
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem;
-
 }
-  .recipe-card {
-    flex: 1 1 300px;
-    max-width: 400px;
-  }
+.recipe-card {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
 
-
-.recipe-card-ingredient
-{
+.recipe-card-ingredient {
   flex: 1 1 300px;
   max-width: 400px;
 }
@@ -49,14 +46,12 @@
   background-color: #f3e5c8;
   color: #02534d;
 }
-.szoveg
-{
+.szoveg {
   background-color: #f3e5c8;
   color: #02534d !important;
 }
-.szoveg2
-{
- font-weight: bold;
+.szoveg2 {
+  font-weight: bold;
   color: #02534d !important;
 }
 ::ng-deep mat-chip.picker {
@@ -64,11 +59,10 @@
   color: #02534d !important;
 }
 
-img{
+img {
   height: 200px;
   object-fit: cover;
 }
-.ingredient
-{
+.ingredient {
   background-color: white;
 }

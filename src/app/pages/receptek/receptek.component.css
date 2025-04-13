@@ -3,89 +3,89 @@
   color: #02534d;
 }
 .recipes-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .filter-chips {
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .mat-chip {
-    cursor: pointer;
-    margin: 0 0.5rem 0.5rem 0;
-  }
-  
-  .recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 15px;
-  }
-  
-  .recipe-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-  }
-  
-  .recipe-card img {
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .recipe-meta {
-    display: flex;
-    gap: 1rem;
-    margin: 0.5rem 0;
-    color: #02534d;
-  }
-  
-  .recipe-meta .mat-icon {
-    vertical-align: middle;
-    margin-right: 0.3rem;
-  }
-  
-  .tags {
-    margin-top: auto;
-    padding-top: 1rem;
-  }
-  .filter-container {
-    margin-bottom: 2rem;
-  }
-  
-  .tag-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .tag-group h3 {
-    color: #02534d;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .mat-chip-option {
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
-  
- ::ng-deep .mat-chip-option[selected] {
-    background-color: #02534d !important;
-    color: #f3e5c8 !important;
-  }
-  
-  .mat-card-actions {
-    margin-top: auto;
-  }
-  .selected-chip {
-    background-color: #02534d !important;
-    color: #f3e5c8 !important;
-  }
-  ::ng-deep .custom-recipe-btn {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filter-chips {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-chip {
+  cursor: pointer;
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 15px;
+}
+
+.recipe-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.recipe-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  color: #02534d;
+}
+
+.recipe-meta .mat-icon {
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
+.tags {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+.filter-container {
+  margin-bottom: 2rem;
+}
+
+.tag-group {
+  margin-bottom: 1.5rem;
+}
+
+.tag-group h3 {
+  color: #02534d;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.mat-chip-option {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+::ng-deep .mat-chip-option[selected] {
+  background-color: #02534d !important;
+  color: #f3e5c8 !important;
+}
+
+.mat-card-actions {
+  margin-top: auto;
+}
+.selected-chip {
+  background-color: #02534d !important;
+  color: #f3e5c8 !important;
+}
+::ng-deep .custom-recipe-btn {
   background-color: #f3e5c8 !important;
   color: #02534d !important;
   font-weight: bold;
@@ -98,9 +98,9 @@
   color: #d97706 !important;
   background-color: #f3e5c8 !important;
 }
-  
-  @media (max-width: 600px) {
-    .recipe-grid {
-      grid-template-columns: 1fr;
-    }
+
+@media (max-width: 600px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
   }
+}

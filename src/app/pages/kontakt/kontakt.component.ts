@@ -1,11 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  MatOption,
+  MatSelect,
+  MatSelectModule,
+} from '@angular/material/select';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardTitle } from '@angular/material/card';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardModule,
+  MatCardTitle,
+} from '@angular/material/card';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
-import { MatError, MatFormField, MatLabel, MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatError,
+  MatFormField,
+  MatLabel,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -16,7 +37,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    
+
     // Material modulok
     MatCardModule,
     MatIconModule,
@@ -26,7 +47,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatSelectModule,
     MatSnackBarModule,
-    
+
     // Egyedi komponensek
     MatCardContent,
     MatCardTitle,
@@ -40,10 +61,10 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatButton,
     MatError,
     MatOption,
-    MatSelect
+    MatSelect,
   ],
   templateUrl: './kontakt.component.html',
-  styleUrls: ['./kontakt.component.css']
+  styleUrls: ['./kontakt.component.css'],
 })
 export class KontaktComponent {
   subscriptionForm: FormGroup;
@@ -52,9 +73,9 @@ export class KontaktComponent {
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      termsAccepted: [false, Validators.requiredTrue]
+      termsAccepted: [false, Validators.requiredTrue],
     });
-    
+
     this.recipeForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -64,7 +85,7 @@ export class KontaktComponent {
       image: [''],
       ingredients: this.fb.array([this.createIngredient()]),
       steps: this.fb.array([this.createStep()]),
-      ytlink: ['']
+      ytlink: [''],
     });
   }
 
@@ -78,13 +99,13 @@ export class KontaktComponent {
 
   createIngredient(): FormGroup {
     return this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
   }
 
   createStep(): FormGroup {
     return this.fb.group({
-      description: ['', Validators.required]
+      description: ['', Validators.required],
     });
   }
 
@@ -111,26 +132,26 @@ export class KontaktComponent {
   onSubmit() {
     if (this.subscriptionForm.valid) {
       console.log('Subscribed with email:', this.subscriptionForm.value.email);
-      
+
       this.snackBar.open('Sikeresen feliratkozott a hírlevélre!', 'Bezár', {
         duration: 3000,
-        panelClass: ['success-snackbar']
+        panelClass: ['success-snackbar'],
       });
-      
+
       this.subscriptionForm.reset();
     }
-    
+
     if (this.recipeForm.valid) {
       const formValue = {
         ...this.recipeForm.value,
         ingredients: this.recipeForm.value.ingredients.map((i: any) => i.name),
-        steps: this.recipeForm.value.steps.map((s: any) => s.description)
+        steps: this.recipeForm.value.steps.map((s: any) => s.description),
       };
 
       console.log('Beküldött recept:', formValue);
-      
+
       this.snackBar.open('Recept sikeresen beküldve!', 'Bezár', {
-        duration: 3000
+        duration: 3000,
       });
     }
   }

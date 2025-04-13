@@ -1,185 +1,285 @@
 <div class="contact-container">
-    <div class="header-section">
-      <h1>Vedd fel velünk a kapcsolatot</h1>
-      <p class="intro-text">
-       Mi mindig örülünk annak hogyha mások is annyira elszántak az ételek és a főzés iránt mint mi vagyunk.Hogyha szeretnél velünk kapcsolatba lépni akkor a lejjeb lévő emailokon keresztül megteheti.
-      </p>
-    </div>
-  
-    <div class="content-grid">
-      
-        <mat-card class="info-card">
-          <mat-card-content>
-            <h3>Hogyha bármilyen alapvető kérdésed lenne akkor ezen a címen keres minket</h3>
-            <div class="contact-method">
-              <mat-icon>email</mat-icon>
-              <a href="mailto:info@thevlogchefs.com">info&#64;thevlogchefs.com</a>
-            </div>
-            
-            <h3>Hogyha valamilyen receptel való észrevétel és vagy kérdés lenne akkor ezen a címen keressen minket</h3>
-            <div class="contact-method">
-              <mat-icon>email</mat-icon>
-              <a href="mailto:receptek@thevlogchefs.com">reciptek&#64;thevlogchefs.com</a>
-            </div>
-          </mat-card-content>
-        </mat-card>
-  
-        <mat-card class="newsletter-card">
-          <mat-card-header>
-            <mat-card-title>Iratkozzon fel a Hírlevelünkre</mat-card-title>
-          </mat-card-header>
-          
-          <mat-card-content>
-            <p>A hírlevélen minden hónapban kiküldjük a hónap hozzávalója recepteket, a kiemelt recepteket és még egy-két különleges receptet is csatolunk az e-mailhez</p>
-            
-            <form [formGroup]="subscriptionForm" (ngSubmit)="onSubmit()" class="subscription-form">
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Email cím</mat-label>
-                <input matInput placeholder="pelda@email.com" formControlName="email" required>
-                <mat-icon matSuffix>email</mat-icon>
-
-              </mat-form-field>
-        
-              <mat-checkbox formControlName="termsAccepted" required class="terms-checkbox">
-                Elfogadom az <a href="#" class="terms-link">Általános feltételeket és követelményeket</a>
-              </mat-checkbox>
-             
-              <button mat-raised-button color="primary" type="submit" [disabled]="!subscriptionForm.valid">
-                Feliratkozás
-              </button>
-            </form>
-          </mat-card-content>
-        </mat-card>
-      </div>
-<div class="middle">
-        <mat-card class="recipe-form-card">
-          <mat-card-header>
-            <mat-card-title>Recept Beküldése</mat-card-title>
-          </mat-card-header>
-          
-          <mat-card-content >
-            <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">
-              <!-- Alap információk -->
-              <div class="form-section">
-                <h3>Alap információk</h3>
-                
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>Recept neve</mat-label>
-                  <input matInput formControlName="title" required>
-                  <mat-error *ngIf="recipeForm.get('title')?.hasError('required')">
-                    A recept neve kötelező
-                  </mat-error>
-                </mat-form-field>
-        
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>Leírás</mat-label>
-                  <textarea matInput formControlName="description" rows="3" required></textarea>
-                  <mat-error *ngIf="recipeForm.get('description')?.hasError('required')">
-                    A leírás kötelező
-                  </mat-error>
-                </mat-form-field>
-              </div>
-        
-              <!-- Idők és nehézség -->
-              <div class="form-section">
-                <h3>Elkészítési adatok</h3>
-                
-                <div class="time-fields">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Előkészítés (perc)</mat-label>
-                    <input matInput type="number" formControlName="prepTime" required>
-                    <mat-error *ngIf="recipeForm.get('prepTime')?.hasError('required')">
-                      Kötelező mező
-                    </mat-error>
-                  </mat-form-field>
-        
-                  <mat-form-field appearance="outline">
-                    <mat-label>Főzés (perc)</mat-label>
-                    <input matInput type="number" formControlName="cookTime" required>
-                    <mat-error *ngIf="recipeForm.get('cookTime')?.hasError('required')">
-                      Kötelező mező
-                    </mat-error>
-                  </mat-form-field>
-        
-                  <mat-form-field appearance="outline">
-                    <mat-label>Nehézség</mat-label>
-                    <mat-select formControlName="difficulty" required>
-                      <mat-option value="Könnyű">Könnyű</mat-option>
-                      <mat-option value="Közepes">Közepes</mat-option>
-                      <mat-option value="Nehéz">Nehéz</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="recipeForm.get('difficulty')?.hasError('required')">
-                      Kötelező mező
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-        
-              <!-- Hozzávalók -->
-              <div class="form-section">
-                <h3>Hozzávalók</h3>
-                <div formArrayName="ingredients">
-                  <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-row">
-                    <mat-form-field appearance="outline" class="full-width">
-                      <mat-label>Hozzávaló {{i + 1}}</mat-label>
-                      <input matInput formControlName="name" required>
-                      <button mat-icon-button matSuffix (click)="removeIngredient(i)" type="button">
-                        <mat-icon>remove_circle</mat-icon>
-                      </button>
-                      <mat-error *ngIf="ingredient.get('name')?.hasError('required')">
-                        Kötelező mező
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-                  <button mat-button type="button" (click)="addIngredient()" class="add-button">
-                    <mat-icon>add</mat-icon> Hozzávaló hozzáadása
-                  </button>
-                </div>
-              </div>
-        
-              <!-- Elkészítési lépések -->
-              <div class="form-section">
-                <h3>Elkészítés</h3>
-                <div formArrayName="steps">
-                  <div *ngFor="let step of steps.controls; let i = index" class="step-row">
-                    <mat-form-field appearance="outline" class="full-width">
-                      <mat-label>{{i + 1}}. lépés</mat-label>
-                      <textarea matInput formControlName="description" rows="2" required></textarea>
-                      <button mat-icon-button matSuffix (click)="removeStep(i)" type="button">
-                        <mat-icon>remove_circle</mat-icon>
-                      </button>
-                      <mat-error *ngIf="step.get('description')?.hasError('required')">
-                        Kötelező mező
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-                  <button mat-button type="button" (click)="addStep()" class="add-button">
-                    <mat-icon>add</mat-icon> Lépés hozzáadása
-                  </button>
-                </div>
-              </div>
-        
-              <!-- Kép és YouTube link -->
-              <div class="form-section">
-                <h3>Egyéb információk</h3>
-                
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>Kép URL</mat-label>
-                  <input matInput formControlName="image">
-                </mat-form-field>
-        
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>YouTube videó link (opcionális)</mat-label>
-                  <input matInput formControlName="ytlink">
-                </mat-form-field>
-              </div>
-        
-              <button mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">
-                Recept beküldése
-              </button>
-            </form>
-          </mat-card-content>
-        </mat-card>
-      
-    </div>
+  <div class="header-section">
+    <h1>Vedd fel velünk a kapcsolatot</h1>
+    <p class="intro-text">
+      Mi mindig örülünk annak hogyha mások is annyira elszántak az ételek és a
+      főzés iránt mint mi vagyunk.Hogyha szeretnél velünk kapcsolatba lépni
+      akkor a lejjeb lévő emailokon keresztül megteheti.
+    </p>
   </div>
+
+  <div class="content-grid">
+    <mat-card class="info-card">
+      <mat-card-content>
+        <h3>
+          Hogyha bármilyen alapvető kérdésed lenne akkor ezen a címen keres
+          minket
+        </h3>
+        <div class="contact-method">
+          <mat-icon>email</mat-icon>
+          <a href="mailto:info@thevlogchefs.com">info&#64;thevlogchefs.com</a>
+        </div>
+
+        <h3>
+          Hogyha valamilyen receptel való észrevétel és vagy kérdés lenne akkor
+          ezen a címen keressen minket
+        </h3>
+        <div class="contact-method">
+          <mat-icon>email</mat-icon>
+          <a href="mailto:receptek@thevlogchefs.com"
+            >reciptek&#64;thevlogchefs.com</a
+          >
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="newsletter-card">
+      <mat-card-header>
+        <mat-card-title>Iratkozzon fel a Hírlevelünkre</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          A hírlevélen minden hónapban kiküldjük a hónap hozzávalója recepteket,
+          a kiemelt recepteket és még egy-két különleges receptet is csatolunk
+          az e-mailhez
+        </p>
+
+        <form
+          [formGroup]="subscriptionForm"
+          (ngSubmit)="onSubmit()"
+          class="subscription-form"
+        >
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email cím</mat-label>
+            <input
+              matInput
+              placeholder="pelda@email.com"
+              formControlName="email"
+              required
+            />
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-checkbox
+            formControlName="termsAccepted"
+            required
+            class="terms-checkbox"
+          >
+            Elfogadom az
+            <a href="#" class="terms-link"
+              >Általános feltételeket és követelményeket</a
+            >
+          </mat-checkbox>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!subscriptionForm.valid"
+          >
+            Feliratkozás
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="middle">
+    <mat-card class="recipe-form-card">
+      <mat-card-header>
+        <mat-card-title>Recept Beküldése</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form
+          [formGroup]="recipeForm"
+          (ngSubmit)="onSubmit()"
+          class="recipe-form"
+        >
+          <!-- Alap információk -->
+          <div class="form-section">
+            <h3>Alap információk</h3>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Recept neve</mat-label>
+              <input matInput formControlName="title" required />
+              <mat-error *ngIf="recipeForm.get('title')?.hasError('required')">
+                A recept neve kötelező
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Leírás</mat-label>
+              <textarea
+                matInput
+                formControlName="description"
+                rows="3"
+                required
+              ></textarea>
+              <mat-error
+                *ngIf="recipeForm.get('description')?.hasError('required')"
+              >
+                A leírás kötelező
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Idők és nehézség -->
+          <div class="form-section">
+            <h3>Elkészítési adatok</h3>
+
+            <div class="time-fields">
+              <mat-form-field appearance="outline">
+                <mat-label>Előkészítés (perc)</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  formControlName="prepTime"
+                  required
+                />
+                <mat-error
+                  *ngIf="recipeForm.get('prepTime')?.hasError('required')"
+                >
+                  Kötelező mező
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Főzés (perc)</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  formControlName="cookTime"
+                  required
+                />
+                <mat-error
+                  *ngIf="recipeForm.get('cookTime')?.hasError('required')"
+                >
+                  Kötelező mező
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Nehézség</mat-label>
+                <mat-select formControlName="difficulty" required>
+                  <mat-option value="Könnyű">Könnyű</mat-option>
+                  <mat-option value="Közepes">Közepes</mat-option>
+                  <mat-option value="Nehéz">Nehéz</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="recipeForm.get('difficulty')?.hasError('required')"
+                >
+                  Kötelező mező
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Hozzávalók -->
+          <div class="form-section">
+            <h3>Hozzávalók</h3>
+            <div formArrayName="ingredients">
+              <div
+                *ngFor="let ingredient of ingredients.controls; let i = index"
+                [formGroupName]="i"
+                class="ingredient-row"
+              >
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Hozzávaló {{ i + 1 }}</mat-label>
+                  <input matInput formControlName="name" required />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="removeIngredient(i)"
+                    type="button"
+                  >
+                    <mat-icon>remove_circle</mat-icon>
+                  </button>
+                  <mat-error
+                    *ngIf="ingredient.get('name')?.hasError('required')"
+                  >
+                    Kötelező mező
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <button
+                mat-button
+                type="button"
+                (click)="addIngredient()"
+                class="add-button"
+              >
+                <mat-icon>add</mat-icon> Hozzávaló hozzáadása
+              </button>
+            </div>
+          </div>
+
+          <!-- Elkészítési lépések -->
+          <div class="form-section">
+            <h3>Elkészítés</h3>
+            <div formArrayName="steps">
+              <div
+                *ngFor="let step of steps.controls; let i = index"
+                class="step-row"
+              >
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>{{ i + 1 }}. lépés</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="description"
+                    rows="2"
+                    required
+                  ></textarea>
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="removeStep(i)"
+                    type="button"
+                  >
+                    <mat-icon>remove_circle</mat-icon>
+                  </button>
+                  <mat-error
+                    *ngIf="step.get('description')?.hasError('required')"
+                  >
+                    Kötelező mező
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <button
+                mat-button
+                type="button"
+                (click)="addStep()"
+                class="add-button"
+              >
+                <mat-icon>add</mat-icon> Lépés hozzáadása
+              </button>
+            </div>
+          </div>
+
+          <!-- Kép és YouTube link -->
+          <div class="form-section">
+            <h3>Egyéb információk</h3>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Kép URL</mat-label>
+              <input matInput formControlName="image" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>YouTube videó link (opcionális)</mat-label>
+              <input matInput formControlName="ytlink" />
+            </mat-form-field>
+          </div>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!recipeForm.valid"
+          >
+            Recept beküldése
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

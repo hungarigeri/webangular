@@ -6,7 +6,7 @@ export class DifficultyPipe implements PipeTransform {
     const map: Record<string, string> = {
       easy: 'Könnyű',
       medium: 'Közepes',
-      hard: 'Nehéz'
+      hard: 'Nehéz',
     };
     return map[value] || value;
   }

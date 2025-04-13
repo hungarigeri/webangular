@@ -11,9 +11,17 @@ import { MatExpansionModule } from '@angular/material/expansion';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent,MatButtonModule,MatCardModule,MatIconModule,MatChipsModule,MatExpansionModule],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatChipsModule,
+    MatExpansionModule,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'chef-vlog';

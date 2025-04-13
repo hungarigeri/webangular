@@ -1,61 +1,67 @@
 <mat-card *ngIf="recipe" class="recipe-detail-card">
-    <button mat-icon-button class="back-button" (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+  <button mat-icon-button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
 
-    
-    
-    <img mat-card-image [src]="recipe.image" [alt]="recipe.title">
-    <br>
-    <div class="yt">
-      <youtube-player  
+  <img mat-card-image [src]="recipe.image" [alt]="recipe.title" />
+  <br />
+  <div class="yt">
+    <youtube-player
       *ngIf="recipe?.ytlink"
       [videoId]="recipe.ytlink"
       [width]="'750'"
-      [height]="'400'">
-      </youtube-player>  
-    </div>
-    
-    
-    <br>
-    <mat-card-header>
- 
-      <mat-card-title>{{recipe.title}}</mat-card-title>
-      <mat-card-subtitle>
-        <span><mat-icon>schedule</mat-icon> {{recipe.prepTime + recipe.cookTime}} perc</span>
-        <span><mat-icon>restaurant</mat-icon> {{recipe.difficulty}}</span>
-      </mat-card-subtitle>
-    </mat-card-header>
-    
- <mat-card-content>
-  <p class="multiline-text">{{recipe.description}}</p>
-  
-  <mat-divider></mat-divider>
-  
-  <h3>Hozzávalók</h3>
-  <mat-list>
-    <mat-list-item *ngFor="let item of recipe.ingredients">
-      <mat-checkbox [checked]="isIngredientChecked(item)" (change)="toggleIngredient(item, $event.checked)">
-        <span class="multiline-text">{{item}}</span>
-      </mat-checkbox>
-    </mat-list-item>
-  </mat-list>
-  
-  <mat-divider></mat-divider>
-  
-  <h3>Elkészítés</h3>
-<mat-list>
-  <mat-list-item class="elkesz" *ngFor="let step of recipe.steps; let i = index">
-    <div mat-line class="multiline-text">{{i+1}}. {{step}}</div>
-  </mat-list-item>
-</mat-list>
-</mat-card-content>
-  </mat-card>
-  
-  <div *ngIf="!recipe" class="not-found">
-    <mat-icon>error_outline</mat-icon>
-    <h2>Recept nem található</h2>
-    <button mat-raised-button color="primary" routerLink="/receptek">
-        Vissza a receptekhez
-      </button>
+      [height]="'400'"
+    >
+    </youtube-player>
   </div>
+
+  <br />
+  <mat-card-header>
+    <mat-card-title>{{ recipe.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <span
+        ><mat-icon>schedule</mat-icon>
+        {{ recipe.prepTime + recipe.cookTime }} perc</span
+      >
+      <span><mat-icon>restaurant</mat-icon> {{ recipe.difficulty }}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="multiline-text">{{ recipe.description }}</p>
+
+    <mat-divider></mat-divider>
+
+    <h3>Hozzávalók</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let item of recipe.ingredients">
+        <mat-checkbox
+          [checked]="isIngredientChecked(item)"
+          (change)="toggleIngredient(item, $event.checked)"
+        >
+          <span class="multiline-text">{{ item }}</span>
+        </mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-divider></mat-divider>
+
+    <h3>Elkészítés</h3>
+    <mat-list>
+      <mat-list-item
+        class="elkesz"
+        *ngFor="let step of recipe.steps; let i = index"
+      >
+        <div mat-line class="multiline-text">{{ i + 1 }}. {{ step }}</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="!recipe" class="not-found">
+  <mat-icon>error_outline</mat-icon>
+  <h2>Recept nem található</h2>
+  <button mat-raised-button color="primary" routerLink="/receptek">
+    Vissza a receptekhez
+  </button>
+</div>

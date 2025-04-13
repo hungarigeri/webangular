@@ -2,20 +2,19 @@
   <mat-card-header>
     <mat-card-title>{{ post.title }}</mat-card-title>
     <mat-card-subtitle>
-      {{ post.createdAt | date:'yyyy. MMMM d.' }} | 
-      Elkészítési idő: {{ post.content.prepTime }} | 
-      Nehézség: {{ post.content.difficulty }}
+      {{ post.createdAt | date : "yyyy. MMMM d." }} | Elkészítési idő:
+      {{ post.content.prepTime }} | Nehézség: {{ post.content.difficulty }}
     </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     <p class="excerpt">{{ post.excerpt }}</p>
-    
+
     <h3>Leírás</h3>
     <p>{{ post.content.description }}</p>
-    
+
     <mat-divider></mat-divider>
-    
+
     <h3>Hozzávalók</h3>
     <h4>Granolához:</h4>
     <mat-list>
@@ -23,25 +22,27 @@
         {{ item }}
       </mat-list-item>
     </mat-list>
-    
+
     <h4>Joghurthoz:</h4>
     <mat-list>
       <mat-list-item *ngFor="let item of post.content.ingredients.yogurt">
         {{ item }}
       </mat-list-item>
     </mat-list>
-    
+
     <mat-divider></mat-divider>
-    
+
     <h3>Elkészítés</h3>
     <mat-list>
-      <mat-list-item *ngFor="let step of post.content.instructions; let i = index">
+      <mat-list-item
+        *ngFor="let step of post.content.instructions; let i = index"
+      >
         <strong>{{ i + 1 }}. lépés:</strong> {{ step }}
       </mat-list-item>
     </mat-list>
-    
+
     <mat-divider></mat-divider>
-    
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>Tippek</mat-panel-title>
@@ -52,7 +53,7 @@
         </mat-list-item>
       </mat-list>
     </mat-expansion-panel>
-    
+
     <div class="nutrition" *ngIf="post.nutrition">
       <h3>Táplálkozási információk</h3>
       <p>Kalória: {{ post.nutrition.calories }}</p>
@@ -60,15 +61,19 @@
       <p>Fehérje: {{ post.nutrition.protein }}</p>
       <p>Zsír: {{ post.nutrition.fat }}</p>
     </div>
-    
+
     <div class="meta" *ngIf="post.content.tags || post.content.origin">
       <mat-divider></mat-divider>
       <div *ngIf="post.content.tags">
         <mat-list>
-          <mat-list-item *ngFor="let tag of post.content.tags">{{ tag }}</mat-list-item>
+          <mat-list-item *ngFor="let tag of post.content.tags">{{
+            tag
+          }}</mat-list-item>
         </mat-list>
       </div>
-      <p *ngIf="post.content.origin"><em>{{ post.content.origin }}</em></p>
+      <p *ngIf="post.content.origin">
+        <em>{{ post.content.origin }}</em>
+      </p>
     </div>
   </mat-card-content>
 </mat-card>
