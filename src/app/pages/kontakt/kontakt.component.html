@@ -216,43 +216,20 @@
           <!-- Elkészítési lépések -->
           <div class="form-section">
             <h3>Elkészítés</h3>
-            <div formArrayName="steps">
-              <div
-                *ngFor="let step of steps.controls; let i = index"
-                class="step-row"
-              >
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>{{ i + 1 }}. lépés</mat-label>
-                  <textarea
-                    matInput
-                    formControlName="description"
-                    rows="2"
-                    required
-                  ></textarea>
-                  <button
-                    mat-icon-button
-                    matSuffix
-                    (click)="removeStep(i)"
-                    type="button"
-                  >
-                    <mat-icon>remove_circle</mat-icon>
-                  </button>
-                  <mat-error
-                    *ngIf="step.get('description')?.hasError('required')"
-                  >
-                    Kötelező mező
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <button
-                mat-button
-                type="button"
-                (click)="addStep()"
-                class="add-button"
-              >
-                <mat-icon>add</mat-icon> Lépés hozzáadása
-              </button>
-            </div>
+        <div formArrayName="steps">
+  <div *ngFor="let step of steps.controls; let i = index" [formGroupName]="i">
+    <mat-form-field>
+      <mat-label>{{ i + 1 }}. lépés</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+    </mat-form-field>
+    <button mat-icon-button (click)="removeStep(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <button mat-button type="button" (click)="addStep()" class="add-button">
+    <mat-icon>add</mat-icon> Lépés hozzáadása
+  </button>
+
           </div>
 
           <!-- Kép és YouTube link -->
@@ -278,6 +255,7 @@
           >
             Recept beküldése
           </button>
+</div>
         </form>
       </mat-card-content>
     </mat-card>

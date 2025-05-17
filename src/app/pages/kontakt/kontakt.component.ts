@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -66,7 +66,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   templateUrl: './kontakt.component.html',
   styleUrls: ['./kontakt.component.css'],
 })
-export class KontaktComponent {
+export class KontaktComponent implements OnInit {
   subscriptionForm: FormGroup;
   recipeForm: FormGroup;
 
@@ -88,6 +88,12 @@ export class KontaktComponent {
       ytlink: [''],
     });
   }
+   ngOnInit() {
+    // Debug kiíratások a form inicializálásakor
+    console.log('----- FORM INIT DEBUG -----');
+    console.log('Form status:', this.recipeForm.status);
+    console.log('Form errors:', this.recipeForm.errors);
+  }
 
   get ingredients(): FormArray {
     return this.recipeForm.get('ingredients') as FormArray;
@@ -108,24 +114,29 @@ export class KontaktComponent {
       description: ['', Validators.required],
     });
   }
+  
 
   addIngredient(): void {
-    this.ingredients.push(this.createIngredient());
-  }
+  this.ingredients.push(this.createIngredient());
+  this.recipeForm.updateValueAndValidity(); // Kényszerítsd a validáció frissítését!
+}
 
   removeIngredient(index: number): void {
-    if (this.ingredients.length > 1) {
-      this.ingredients.removeAt(index);
-    }
+  if (this.ingredients.length > 1) {
+    this.ingredients.removeAt(index);
+    this.recipeForm.updateValueAndValidity(); // Frissítsd a form állapotát!
   }
+}
 
   addStep(): void {
     this.steps.push(this.createStep());
+     this.recipeForm.updateValueAndValidity();
   }
 
   removeStep(index: number): void {
     if (this.steps.length > 1) {
       this.steps.removeAt(index);
+        this.steps.removeAt(index);
     }
   }
 
@@ -154,5 +165,8 @@ export class KontaktComponent {
         duration: 3000,
       });
     }
+    
   }
+
+  
 }

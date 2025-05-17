@@ -77,9 +77,9 @@
         [alt]="featuredIngredient.name"
         class="img"
       />
-      <mat-panel-description class="szoveg2">{{
-        featuredIngredient.description
-      }}</mat-panel-description>
+<mat-panel-description class="szoveg2" 
+  [innerHTML]="featuredIngredient.description | ingredientHighlight:featuredIngredient.name">
+</mat-panel-description>
       <mat-chip-listbox>
         <mat-chip
           class="picker"

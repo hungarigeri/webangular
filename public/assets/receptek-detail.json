@@ -25,12 +25,12 @@
       "ytlink": "IBNHzK5v5vg"
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "Házi pizzatészta",
       "prepTime": 20,
       "cookTime": 15,
       "difficulty": "Közepes",
-      "image": "assets/pizza.jpg",
+      "image": "assets/brownie.jpg",
       "description": "Tökéletes pizzatészta kezdőknek és profiknak egyaránt",
       "ingredients": [
         "500g finomliszt",

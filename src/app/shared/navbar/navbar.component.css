@@ -144,3 +144,29 @@
     display: none !important;
   }
 }
+.welcome-message {
+  margin-left: 15px;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #f3e5c8;
+}
+
+.logout-button {
+  color: #f3e5c8 !important;
+  margin-left: 25px;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.logout-button:hover {
+  color: #d97706 !important;
+  background-color: transparent !important;
+}
+
+/* Mobil menü gomb stílusai */
+.mobile-menu .logout-button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 0;
+  margin: 0;
+}

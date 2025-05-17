@@ -1,0 +1,61 @@
+<div class="login-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Üdv újra a Chef Vlog-nál!</h1>
+      <p>Jelentkezz be, és folytasd gasztro-kalandodat!</p>
+    </div>
+  </section>
+
+  <mat-card class="login-card">
+    <mat-card-content>
+      <form (ngSubmit)="login()">
+        <!-- Email -->
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput [formControl]="email" type="email" required>
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="email.hasError('required')">
+            Kötelező mező
+          </mat-error>
+          <mat-error *ngIf="email.hasError('email')">
+            Érvényes email címet adj meg
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Jelszó -->
+        <mat-form-field appearance="outline">
+          <mat-label>Jelszó</mat-label>
+          <input matInput [formControl]="password" type="password" required>
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="password.hasError('required')">
+            Kötelező mező
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">
+            Legalább 6 karakter
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Hibaüzenet -->
+        <div *ngIf="errorMessage" class="error-message">
+          <mat-icon>error</mat-icon>
+          {{ errorMessage }}
+        </div>
+
+        <!-- Bejelentkezés gomb -->
+        <button 
+          mat-raised-button 
+          class="login-button" 
+          type="submit" 
+          [disabled]="email.invalid || password.invalid || loading"
+        >
+          <span *ngIf="!loading">Bejelentkezés</span>
+          <mat-spinner *ngIf="loading" diameter="24"></mat-spinner>
+        </button>
+      </form>
+
+      <p class="register-link">
+        Nincs még fiókod? <a routerLink="/register">Regisztrálj</a>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

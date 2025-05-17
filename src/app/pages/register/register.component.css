@@ -1,0 +1,67 @@
+.test {
+  background-color: #f3e5c8;
+  color: #02534d;
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/taylor-kiser-1YhSMc1IywE-unsplash.jpg");
+  background-size: cover;
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.auth-card {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.login-link,
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+  color: #02534d;
+}
+
+.login-link a,
+.register-link a {
+  color: #d97706;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.custom-recipe-btn {
+  background-color: #f3e5c8 !important;
+  color: #02534d !important;
+  font-weight: bold;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s !important;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.custom-recipe-btn:hover {
+  color: #d97706 !important;
+  background-color: #f3e5c8 !important;
+}
+
+.error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+mat-spinner {
+  margin: 0 auto;
+}

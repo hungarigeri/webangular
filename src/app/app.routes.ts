@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
+import { authGuard, publicGuard } from './shared/guards/auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
       import('./pages/receptek/receptek.component').then(
         (m) => m.ReceptekComponent
       ),
+      canActivate:[authGuard]
   },
   {
     path: 'kontakt',
@@ -20,6 +22,7 @@ export const routes: Routes = [
       import('./pages/kontakt/kontakt.component').then(
         (m) => m.KontaktComponent
       ),
+       canActivate:[authGuard]
   },
   {
     path: 'recept/:id',
@@ -27,6 +30,7 @@ export const routes: Routes = [
       import('./pages/recept-details/recept-details.component').then(
         (m) => m.ReceptDetailsComponent
       ),
+       canActivate:[authGuard]
   },
   {
     path: 'posztok/:id',
@@ -34,5 +38,22 @@ export const routes: Routes = [
       import('./pages/posztoktartalma/posztoktartalma.component').then(
         (m) => m.PosztoktartalmaComponent
       ),
+       canActivate:[authGuard]
+  },
+    {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then(
+        (m) => m.LoginComponent
+      ),
+       canActivate:[publicGuard]
+  },
+   {
+    path: 'register',
+    loadComponent: () =>
+      import('./pages/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
+      canActivate:[publicGuard]
   },
 ];

@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { DifficultyPipe } from '../../pipe/difficulty';
+import { DifficultyPipe } from '../../pipe/difficulty.pipe';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {
@@ -15,6 +15,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { Posts } from '../../models/posts.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { IngredientHighlightPipe } from '../../pipe/ingredient-highlight-pipe.pipe';
 
 @Component({
   standalone: true,
@@ -32,6 +33,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatExpansionPanelHeader,
     MatExpansionPanel,
     MatAccordion,
+    IngredientHighlightPipe
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

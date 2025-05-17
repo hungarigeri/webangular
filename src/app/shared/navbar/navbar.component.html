@@ -3,12 +3,25 @@
     <a routerLink="/" class="brand">
       <img class="material-icons" id="logo" src="assets/chef.png" />
       <span>Chef Vlog</span>
+      <span *ngIf="currentUser$ | async as user" class="welcome-message">
+        Üdvözöljük, {{ user.displayName || user.email }}
+      </span>
     </a>
 
     <div class="nav-links">
       <a routerLink="/">Home</a>
       <a routerLink="/receptek">Receptek</a>
       <a routerLink="/kontakt">Kontakt</a>
+      
+      <ng-container *ngIf="!(isLoggedIn$ | async); else loggedInMenu">
+        <a routerLink="/login">Bejelentkezés</a>
+      </ng-container>
+      
+      <ng-template #loggedInMenu>
+        <button mat-button class="logout-button" (click)="logout()">
+          Kijelentkezés
+        </button>
+      </ng-template>
     </div>
 
     <button class="mobile-menu-btn" (click)="toggleMenu()">
@@ -23,5 +36,15 @@
     <mat-divider></mat-divider>
     <a routerLink="/kontakt" (click)="toggleMenu()">Kontakt</a>
     <mat-divider></mat-divider>
+    
+    <ng-container *ngIf="isLoggedIn$ | async; else mobileLogin">
+      <button mat-button class="logout-button" (click)="logout(); toggleMenu()">
+        Kijelentkezés
+      </button>
+    </ng-container>
+    
+    <ng-template #mobileLogin>
+      <a routerLink="/login" (click)="toggleMenu()">Bejelentkezés</a>
+    </ng-template>
   </div>
 </nav>
