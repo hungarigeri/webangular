@@ -131,14 +131,14 @@ export class HomeComponent implements OnInit {
 
   // Add these recipes for the ingredient
   ingredientRecipes = [
-    { id: 3, title: 'Pesto brokkoli- Gnocchi' },
-    { id: 1, title: 'Margherita pizza' },
-    { id: 4, title: 'Caprese saláta' },
+    { id: "8ISu4HSNXd657jsCctGg", title: 'Pesto brokkoli- Gnocchi' },
+    { id: "eyXoAl0sbM9AwA7VzUkA", title: 'Margherita pizza' },
+    { id: "wJfagU1s7F4Mpmb8gOh5", title: 'Bográcsgulyás' },
   ];
 
   featuredRecipes = [
     {
-      id: 1,
+      id: "eyXoAl0sbM9AwA7VzUkA",
       title: 'Házi pizzatészta',
       prepTime: 20,
       cookTime: 15,
@@ -146,7 +146,7 @@ export class HomeComponent implements OnInit {
       imageUrl: 'assets/pizza.jpg',
     },
     {
-      id: 2,
+      id:"i5rVT34udwQo67OTDYl0",
       title: 'Házi brownie',
       prepTime: 31,
       cookTime: 22,
