@@ -14,6 +14,16 @@
       </mat-chip-listbox>
     </div>
 
+    <!-- Speciális szűrők -->
+    <div class="tag-group">
+      <h3>Speciális szűrők</h3>
+      <mat-chip-listbox>
+        <mat-chip-option (click)="loadDifficultRecipes()">Nehéz receptek</mat-chip-option>
+        <mat-chip-option (click)="loadNewestRecipes()">Legújabbak</mat-chip-option>
+        <mat-chip-option (click)="loadQuickEasyRecipes()">Gyors & könnyű</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
     <!-- Összes tag -->
     <div class="tag-group">
       <h3>Összes</h3>
@@ -47,14 +57,23 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button
-          mat-raised-button
-          class="custom-recipe-btn"
-          [routerLink]="['/recept', recipe.id]"
-        >
+        <button 
+          mat-raised-button 
+          class="custom-recipe-btn" 
+          [routerLink]="['/recept', recipe.id]">
           Recept megtekintése
         </button>
       </mat-card-actions>
     </mat-card>
+  </div>
+
+  <!-- Lapozás gomb -->
+  <div class="load-more" *ngIf="hasMore">
+    <button 
+      mat-raised-button 
+      (click)="loadMoreRecipes()"
+      [disabled]="loading">
+      {{ loading ? 'Betöltés...' : 'További receptek' }}
+    </button>
   </div>
 </div>

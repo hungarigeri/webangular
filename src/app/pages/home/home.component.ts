@@ -16,7 +16,9 @@ import { CommonModule } from '@angular/common';
 import { Posts } from '../../models/posts.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IngredientHighlightPipe } from '../../pipe/ingredient-highlight-pipe.pipe';
-
+import { Firestore, collection, query, where, limit, collectionData, DocumentData, Timestamp, orderBy } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Receptek } from '../../models/receptek.models';
 @Component({
   standalone: true,
   imports: [
@@ -39,12 +41,60 @@ import { IngredientHighlightPipe } from '../../pipe/ingredient-highlight-pipe.pi
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+   private firestore = inject(Firestore);
   private http = inject(HttpClient);
   latestPosts: Posts[] = [];
+   loading = false;
+    recipes$: Observable<Receptek[]>;
+    recipes: Receptek[] = [];
+    filteredRecipes: Receptek[] = [];
+    lastVisible: any = null;
+
+     constructor() {
+        const recipesCollection = collection(this.firestore, 'receptek');
+        const initialQuery = query(
+          recipesCollection,
+          orderBy('difficulty'),
+          limit(8)
+        );
+        this.recipes$ = collectionData(initialQuery, { idField: 'id' }) as Observable<Receptek[]>;
+      }
 
   ngOnInit() {
     this.loadPosts();
   }
+   private loadInitialRecipes() {
+    this.loading = true;
+    this.recipes$.subscribe({
+      next: (data) => {
+        this.recipes = data.map(doc => this.convertToReceptek(doc));
+        this.filteredRecipes = [...this.recipes];
+        this.lastVisible = data[data.length - 1];
+        this.loading = false;
+      },
+      error: (err) => console.error('Error loading recipes:', err),
+    });
+  }
+    private convertToReceptek(doc: DocumentData): Receptek {
+      const createdAt = doc['createdAt'] 
+        ? (doc['createdAt'] instanceof Timestamp ? doc['createdAt'].toDate() : new Date(doc['createdAt']))
+        : new Date();
+  
+      return {
+        id: doc['id'] || '',
+        cookTime: doc['cookTime'] || 0,
+        description: doc['description'] || '',
+        difficulty: doc['difficulty'] || 'Közepes',
+        image: doc['image'] || '',
+        ingredients: doc['ingredients'] || [],
+        prepTime: doc['prepTime'] || 0,
+        steps: doc['steps'] || [],
+        tags: doc['tags'] || [],
+        title: doc['title'] || '',
+        ytlink: doc['ytlink'] || '',
+        createdAt
+      };
+    }
 
   private loadPosts() {
     this.http.get<Posts[]>('/assets/posts.json').subscribe({

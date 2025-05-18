@@ -7,9 +7,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Receptektartalom } from '../../models/receptektartalom.model';
-import { MatCheckbox } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+// Firebase imports
+import { Firestore, doc, docData } from '@angular/fire/firestore';
+
+interface Recipe {
+  id?: string;
+  cookTime: number;
+  description: string;
+  difficulty: string;
+  image: string;
+  ingredients: string[];
+  prepTime: number;
+  steps: string[];
+  title: string;
+  ytlink: string;
+}
 
 @Component({
   selector: 'app-recept-details',
@@ -22,23 +36,56 @@ import { MatCheckbox } from '@angular/material/checkbox';
     MatListModule,
     MatDividerModule,
     RouterModule,
-    YouTubePlayerModule, // Module-t importálj, nem a komponenst
-    HttpClientModule,
-    MatCheckbox,
+    YouTubePlayerModule,
+    MatCheckboxModule,
   ],
   templateUrl: './recept-details.component.html',
-  styleUrls: ['./recept-details.component.css'],
+  styleUrls: ['./recept-details.component.css']
 })
 export class ReceptDetailsComponent implements OnInit {
+  private firestore: Firestore = inject(Firestore);
   private route = inject(ActivatedRoute);
-  private http = inject(HttpClient);
   private router = inject(Router);
 
-  recipeId = Number(this.route.snapshot.paramMap.get('id'));
-  recipes: Receptektartalom[] = [];
-  recipe?: Receptektartalom;
+  recipeId: string = '';
+  recipe?: Recipe;
   checkedIngredients: string[] = [];
 
+ngOnInit() {
+  console.log('Component initialized'); // Check if this appears in console
+  
+  this.route.paramMap.subscribe(params => {
+    this.recipeId = params.get('id') || '';
+    console.log('Route param ID:', this.recipeId); // Check the ID value
+    
+    if (!this.recipeId) {
+      console.error('No recipe ID provided');
+      this.router.navigate(['/receptek']);
+      return;
+    }
+    
+    this.loadRecipe();
+  });
+}
+private loadRecipe() {
+  console.log('Trying to load recipe with ID:', this.recipeId);
+  const recipeDoc = doc(this.firestore, 'receptek', this.recipeId);
+  
+  docData(recipeDoc).subscribe({
+    next: (data) => {
+      console.log('Received data:', data); // Debug what's coming from Firestore
+      if (data) {
+        this.recipe = { ...data, id: this.recipeId } as Recipe;
+      } else {
+        console.error('Document exists but data is empty');
+      }
+    },
+    error: (err) => {
+      console.error('Firestore error:', err);
+      this.router.navigate(['/error']);
+    }
+  });
+}
   isIngredientChecked(ingredient: string): boolean {
     return this.checkedIngredients.includes(ingredient);
   }
@@ -53,29 +100,6 @@ export class ReceptDetailsComponent implements OnInit {
         (item) => item !== ingredient
       );
     }
-  }
-
-  ngOnInit() {
-    this.loadRecipes();
-  }
-
-  private loadRecipes() {
-    this.http
-      .get<Receptektartalom[]>('/assets/receptek-detail.json')
-      .subscribe({
-        next: (data) => {
-          this.recipes = data;
-          this.recipe = this.recipes.find((r) => r.id === this.recipeId);
-
-          if (!this.recipe) {
-            console.warn(`Nem található recept ${this.recipeId} ID-val`);
-          }
-        },
-        error: (err) => {
-          console.error('Hiba a receptek betöltésekor:', err);
-          this.router.navigate(['/error']); // Átirányítás hiba esetén
-        },
-      });
   }
 
   goBack() {

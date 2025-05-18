@@ -1,5 +1,5 @@
 export interface Receptektartalom {
-  id: number;
+  id: string;
   title: string;
   prepTime: number;
   cookTime: number;

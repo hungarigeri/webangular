@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagsComponent } from './tags.component';
+import { TagsService  } from './tags.service';
 
-describe('TagsComponent', () => {
-  let component: TagsComponent;
-  let fixture: ComponentFixture<TagsComponent>;
+describe('TagsService ', () => {
+  let component: TagsService ;
+  let fixture: ComponentFixture<TagsService >;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TagsComponent],
+      imports: [TagsService ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TagsComponent);
+    fixture = TestBed.createComponent(TagsService );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

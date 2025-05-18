@@ -53,43 +53,50 @@ export class RegisterComponent {
   ) {}
 
   async onSubmit() {
-    if (this.registerForm.invalid) {
-      this.errorMessage = 'Kérjük töltsd ki az összes mezőt helyesen!';
-      return;
-    }
-
-    const password = this.registerForm.value.password;
-    const confirmPassword = this.registerForm.value.confirmPassword;
-
-    if (password !== confirmPassword) {
-      this.errorMessage = 'A jelszavak nem egyeznek!';
-      return;
-    }
-
-    this.loading = true;
-    this.errorMessage = '';
-
-    try {
-      const email = this.registerForm.value.email || '';
-      const password = this.registerForm.value.password || '';
-      const firstName = this.registerForm.value.name?.firstName || '';
-      const lastName = this.registerForm.value.name?.lastName || '';
-
-      await this.authService.register(email, password, `${firstName} ${lastName}`);
-      
-      this.snackBar.open('Sikeres regisztráció!', 'Bezár', {
-        duration: 3000,
-        panelClass: ['success-snackbar']
-      });
-      
-      this.router.navigate(['/home']);
-    } catch (error: any) {
-      console.error('Regisztrációs hiba:', error);
-      this.handleError(error);
-    } finally {
-      this.loading = false;
-    }
+  if (this.registerForm.invalid) {
+    this.errorMessage = 'Kérjük töltsd ki az összes mezőt helyesen!';
+    return;
   }
+
+  const password = this.registerForm.value.password;
+  const confirmPassword = this.registerForm.value.confirmPassword;
+
+  if (password !== confirmPassword) {
+    this.errorMessage = 'A jelszavak nem egyeznek!';
+    return;
+  }
+
+  this.loading = true;
+  this.errorMessage = '';
+
+  try {
+    const email = this.registerForm.value.email || '';
+    const password = this.registerForm.value.password || '';
+    const firstName = this.registerForm.value.name?.firstName || '';
+    const lastName = this.registerForm.value.name?.lastName || '';
+
+    // Updated to pass firstName and lastName to the register method
+    await this.authService.register(
+      email, 
+      password, 
+      `${firstName} ${lastName}`,
+      firstName,
+      lastName
+    );
+    
+    this.snackBar.open('Sikeres regisztráció!', 'Bezár', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+    
+    this.router.navigate(['/home']);
+  } catch (error: any) {
+    console.error('Regisztrációs hiba:', error);
+    this.handleError(error);
+  } finally {
+    this.loading = false;
+  }
+}
     private handleError(error: any): void {
     switch(error.code) {
       case 'auth/email-already-in-use':

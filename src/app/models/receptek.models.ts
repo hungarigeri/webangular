@@ -1,10 +1,14 @@
 export interface Receptek {
-  id: number;
-  title: string;
-  prepTime: number;
+  id: string;
   cookTime: number;
-  difficulty: string;
-  image: string;
-  tags: string[];
   description: string;
+   difficulty: 'Könnyű' | 'Közepes' | 'Nehéz';
+  image: string;
+  ingredients: string[];
+  prepTime: number;
+  steps: string[];
+  tags: string[]; 
+  title: string;
+  ytlink: string;
+  createdAt?: Date; // Opcionális, ha dátum szerint rendezel
 }

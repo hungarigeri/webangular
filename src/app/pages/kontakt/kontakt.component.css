@@ -152,3 +152,28 @@ button.add-button:hover {
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.5rem;
 }
+.mat-form-field.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-chip-row {
+  margin: 2px;
+}
+
+.mat-autocomplete-panel {
+  max-height: 200px;
+}.tag-group {
+  margin-bottom: 1rem;
+}
+
+.tag-group h4 {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.tag-group mat-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

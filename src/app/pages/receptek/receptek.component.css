@@ -22,10 +22,19 @@
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 15px;
+  gap: 20px;
+  padding: 20px 0;
 }
 
+.load-more {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.load-more button {
+  padding: 10px 30px;
+}
 .recipe-card {
   height: 100%;
   display: flex;

@@ -246,6 +246,44 @@
               <input matInput formControlName="ytlink" />
             </mat-form-field>
           </div>
+          <div class="form-section">
+  <h3>Címkék</h3>
+  
+  <!-- Dinamikus csoportok megjelenítése -->
+<div *ngFor="let group of objectKeys(tagGroups)" class="tag-group">
+  <h4>{{ group }}</h4>
+  <mat-chip-listbox>
+    <mat-chip-option 
+      *ngFor="let tag of tagGroups[group]"
+      [selected]="selectedTags.includes(tag)"
+      (click)="toggleTag(tag)">
+      {{ tag }}
+    </mat-chip-option>
+  </mat-chip-listbox>
+</div>
+
+  <!-- Manuális címke hozzáadás -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-chip-grid #chipGrid>
+      <mat-chip-row *ngFor="let tag of selectedTags" (removed)="removeTag(tag)">
+        {{ tag }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input 
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="[13, 188]" 
+        (matChipInputTokenEnd)="addTag($event)"
+        placeholder="Új címke...">
+    </mat-chip-grid>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let tag of availableTags" [value]="tag" (click)="addTagFromAutocomplete(tag)">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
 
           <button
             mat-raised-button
