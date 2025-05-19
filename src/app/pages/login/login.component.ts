@@ -41,9 +41,9 @@ export class LoginComponent implements OnDestroy {
   authSubscription?: Subscription;
 
   constructor(
-    private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
   ) {}
 
   async login() {
@@ -65,8 +65,8 @@ export class LoginComponent implements OnDestroy {
         duration: 3000,
         panelClass: ['success-snackbar']
       });
-      
-      this.router.navigate(['/']);
+      this.authService.updateLoginStatus(true);
+      this.router.navigate(['']);
     } catch (error: any) {
       console.error('Bejelentkezési hiba:', error);
       this.handleError(error);

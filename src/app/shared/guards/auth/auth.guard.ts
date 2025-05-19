@@ -25,7 +25,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
 export const publicGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const authService = inject(AuthService);
+  const authService = inject(AuthService);const notify = inject(NotificationService);
   
   return authService.currentUser$.pipe(
     take(1),
@@ -33,9 +33,8 @@ export const publicGuard: CanActivateFn = (route, state) => {
       if (!user) {
         return true;
       }
-      
       console.log('Already authenticated, redirecting to home');
-      router.navigate(['/home']);
+      router.navigate(['/']);
       return false;
     })
   );

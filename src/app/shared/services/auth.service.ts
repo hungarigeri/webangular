@@ -24,6 +24,7 @@ export class AuthService {
     private auth: Auth,
     private firestore: Firestore,
     private router: Router
+    
   ) {
     this.currentUser$ = authState(this.auth);
   }
@@ -99,8 +100,8 @@ export class AuthService {
     return this.currentUser$;
   }
   
-  private updateLoginStatus(isLoggedIn: boolean): void {
-    localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+  public updateLoginStatus(isLoggedIn: boolean): void {
+    localStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
   }
   
   isAuthenticated(): Observable<boolean> {

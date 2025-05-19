@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <a routerLink="/" class="brand">
+    <a routerLink="" class="brand">
       <img class="material-icons" id="logo" src="assets/chef.png" />
       <span>Chef Vlog</span>
       <span *ngIf="currentUser$ | async as user" class="welcome-message">
@@ -9,7 +9,7 @@
     </a>
 
     <div class="nav-links">
-      <a routerLink="/">Home</a>
+      <a routerLink="">Home</a>
       <a routerLink="/receptek">Receptek</a>
       <a routerLink="/kontakt">Kontakt</a>
       
