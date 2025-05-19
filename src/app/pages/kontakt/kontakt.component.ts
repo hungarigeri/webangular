@@ -121,10 +121,7 @@ objectKeys(obj: any): string[] {
       this.tagGroups = this.tagsService.getTagGroups();
       this.availableTags = tags;
     });
-    // Debug kiíratások a form inicializálásakor
-    console.log('----- FORM INIT DEBUG -----');
-    console.log('Form status:', this.recipeForm.status);
-    console.log('Form errors:', this.recipeForm.errors);
+
   }
   addTagFromAutocomplete(tag: string): void {
   if (tag && !this.selectedTags.includes(tag)) {
